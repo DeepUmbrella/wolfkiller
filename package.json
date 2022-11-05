@@ -1,0 +1,38 @@
+{
+  "name": "wolfkiller",
+  "private": "false",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "a personal family game ",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DeepUmbrella/wolfkiller.git"
+  },
+  "keywords": [
+    "wolfkiller"
+  ],
+  "author": "linyan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DeepUmbrella/wolfkiller/issues"
+  },
+  "homepage": "https://github.com/DeepUmbrella/wolfkiller#readme",
+  "scripts": {
+    "test": "dev",
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.22",
+    "@types/react-dom": "^18.0.7",
+    "@vitejs/plugin-react": "^2.2.0",
+    "typescript": "^4.6.4",
+    "vite": "^3.2.0"
+  }
+}
