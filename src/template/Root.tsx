@@ -1,7 +1,12 @@
 import React from "react";
+import Request from "src/components/business/request";
 
-import "@styles/token.scss";
+import "./root.scss";
 
 export const Root = () => {
-  return <div>root</div>;
+  return (
+    <div id="wolf-root">
+      <Request />
+    </div>
+  );
 };
