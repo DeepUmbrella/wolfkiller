@@ -1,5 +1,5 @@
 import React from "react";
-import Request from "src/components/business/request";
+import { Request } from "@components";
 
 import "./root.scss";
 
