@@ -1,6 +1,14 @@
-import React, { ChangeEvent, ChangeEventHandler, useMemo, useRef, useState } from "react";
+import React, {
+  ChangeEvent,
+  ChangeEventHandler,
+  useCallback,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import "./request.scss";
 import axios, { AxiosResponse, AxiosStatic } from "axios";
+import { join } from "path";
 
 axios.defaults.withCredentials = true;
 
@@ -9,6 +17,8 @@ export const Request = () => {
   const [password, setPassword] = useState("");
   const [validate, setValidate] = useState("");
   const [url, setUrl] = useState("");
+
+  const [value, setValue] = useState();
 
   const [response, setResponse] = useState("");
 
@@ -48,6 +58,30 @@ export const Request = () => {
       .catch((err) => {
         setResponse(JSON.stringify(err));
       });
+  };
+
+  const onSubmit = useCallback(() => {
+    const formData = new FormData();
+    console.log(value);
+    formData.append("file", value);
+
+    fetch("http://localhost:5173/api/upload", {
+      method: "post",
+      body: formData,
+    }).then(console.log, console.log);
+  }, [value]);
+
+  const useFetch = async () => {
+    const res = await fetch("api/upload/download2").then((res) => res.arrayBuffer());
+    const blob = new Blob([res]);
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "123.zip";
+    a.click();
+  };
+  const downlaod = () => {
+    useFetch();
   };
 
   const data = useMemo(() => {
@@ -99,6 +133,26 @@ export const Request = () => {
           >
             Post
           </button>
+        </div>
+        <div className="form">
+          <form action="http://localhost:5173/upload" method="post" encType="multipart/form-data">
+            <input
+              type="file"
+              name="uploadfile"
+              id="uploadfile1"
+              accept=".jpg, .jpeg, .png"
+              multiple
+              onChange={(e) => {
+                if (e.target.files?.length) {
+                  setValue(e.target.files[0]);
+                }
+                console.log(e.target.files, "e");
+                // setValue(e);
+              }}
+            />
+          </form>
+          <button onClick={onSubmit}>submit</button>
+          <button onClick={downlaod}>downLoad</button>
         </div>
       </div>
       <div className="res-demo">
