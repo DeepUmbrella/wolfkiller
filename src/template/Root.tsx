@@ -1,12 +1,13 @@
 import React from "react";
-import { Request } from "@components";
+// import { Request } from "@components";
 
 import "./root.scss";
 
-export const Root = () => {
+export const Root = (props) => {
+  console.log(props, "Root");
   return (
     <div id="wolf-root">
-      <Request />
+      <button> </button>
     </div>
   );
 };
