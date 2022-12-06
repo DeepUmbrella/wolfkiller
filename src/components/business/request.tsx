@@ -9,6 +9,7 @@ import React, {
 import "./request.scss";
 import axios, { AxiosResponse, AxiosStatic } from "axios";
 import { join } from "path";
+import { login } from "../../api/user";
 
 axios.defaults.withCredentials = true;
 
@@ -47,7 +48,11 @@ export const Request = () => {
       setNeedsValidate(data?.validateUrl);
     }
   };
-  const handleSubmit = async (method: "get" | "post", url: string, data?: any) => {
+  const handleSubmit = async (
+    method: "get" | "post",
+    url: string,
+    data?: any
+  ) => {
     const res = axios[method](url, data)
       .then((response: AxiosResponse<{ validateUrl: string }>) => {
         if (response.data?.validateUrl) {
@@ -72,7 +77,9 @@ export const Request = () => {
   }, [value]);
 
   const useFetch = async () => {
-    const res = await fetch("api/upload/download2").then((res) => res.arrayBuffer());
+    const res = await fetch("api/upload/download2").then((res) =>
+      res.arrayBuffer()
+    );
     const blob = new Blob([res]);
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
@@ -80,8 +87,14 @@ export const Request = () => {
     a.download = "123.zip";
     a.click();
   };
-  const downlaod = () => {
-    useFetch();
+  const downlaod = async () => {
+    const x = await login({
+      password: "asdfaf",
+      email: "asdf",
+      safety_verify_code: "asdf",
+    });
+
+    console.log(x);
   };
 
   const data = useMemo(() => {
@@ -98,7 +111,13 @@ export const Request = () => {
           <label htmlFor="req-url" className="url-text">
             Request Url :
           </label>
-          <input type="tel" name="url" id="req-url" value={url} onChange={handleUrl} />
+          <input
+            type="tel"
+            name="url"
+            id="req-url"
+            value={url}
+            onChange={handleUrl}
+          />
         </div>
         <div className="user">
           <input type="text" value={user} onChange={hangdleUser} />
@@ -117,13 +136,19 @@ export const Request = () => {
             <input type="text" value={validate} onChange={hangdleValidate} />
             <img
               src={codeUrl}
-              onClick={() => setCodeUrl(baseCodeUrl.current + "?" + new Date().getTime())}
+              onClick={() =>
+                setCodeUrl(baseCodeUrl.current + "?" + new Date().getTime())
+              }
               alt="validate-image"
             />
           </div>
         }
         <div className="submit">
-          <button type="submit" className="req-get" onClick={() => handleSubmit("get", url)}>
+          <button
+            type="submit"
+            className="req-get"
+            onClick={() => handleSubmit("get", url)}
+          >
             Get
           </button>
           <button
@@ -135,7 +160,11 @@ export const Request = () => {
           </button>
         </div>
         <div className="form">
-          <form action="http://localhost:5173/upload" method="post" encType="multipart/form-data">
+          <form
+            action="http://localhost:5173/upload"
+            method="post"
+            encType="multipart/form-data"
+          >
             <input
               type="file"
               name="uploadfile"

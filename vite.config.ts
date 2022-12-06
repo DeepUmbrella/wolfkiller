@@ -6,10 +6,12 @@ export default defineConfig({
   resolve: {
     alias: {
       "@components": resolve(__dirname, "src/components"),
-      "@types": resolve(__dirname, "src/types"),
+
       "@hooks": resolve(__dirname, "src/hooks"),
       "@styles": resolve(__dirname, "src/styles"),
       "@template": resolve(__dirname, "src/template"),
+      "@vtypes/*": resolve(__dirname, "src/types/*"),
+      "@constant": resolve(__dirname, "src/constant"),
     },
   },
   server: {
