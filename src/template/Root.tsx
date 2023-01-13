@@ -19,7 +19,7 @@ export const Root = () => {
   }
   return (
     <div id="wolf-root">
-      <Request />
+      <button> </button>
     </div>
   );
 };
