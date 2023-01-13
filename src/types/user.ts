@@ -35,3 +35,8 @@ export type RegisterRequest = {
 export type RegisterResponse = LoginResponse;
 
 export type GetUserResponse = LoginResponse;
+
+export type CheckResponse = {
+  state: boolean;
+  error_message: string;
+};
