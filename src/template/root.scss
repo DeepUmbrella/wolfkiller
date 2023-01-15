@@ -1,7 +1,7 @@
 @import "@styles/resource.scss";
 
 :root {
-  body {
+  * {
     padding: $m0;
     margin: $p0;
   }
@@ -22,13 +22,26 @@
   -webkit-text-size-adjust: 100%;
 }
 
+li {
+  list-style: none;
+}
+
 a {
-  font-weight: 500;
+  font-weight: 400;
   color: #62cf93;
   text-decoration: none;
 }
 a:hover {
   text-decoration: underline;
+}
+
+header,
+footer {
+  background-color: $deep-dark;
+}
+
+img {
+  display: block;
 }
 
 button {

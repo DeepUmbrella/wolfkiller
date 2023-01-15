@@ -1,0 +1,104 @@
+@import "@styles/resource.scss";
+
+@keyframes aound {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.global-header {
+  position: sticky;
+  left: 0;
+  top: 0;
+  width: 100%;
+
+  background: #000;
+  z-index: 999;
+  transition: all 0.6s;
+
+  .main-content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 87px;
+
+    .header-logo {
+      display: flex;
+      justify-content: center;
+      flex: 2;
+
+      .header-logo-com {
+        position: relative;
+        overflow: hidden;
+        border-radius: 5px;
+        &:before {
+          content: " ";
+          z-index: -1;
+          display: block;
+          position: absolute;
+          left: -100%;
+          top: -100%;
+          width: 300%;
+          height: 300%;
+          background: linear-gradient(red, #2ac4ff, #ff0095);
+          animation: aound 2s linear infinite;
+        }
+        margin: 3px;
+        img {
+          z-index: 1;
+          border: 5px solid transparent;
+          border-radius: 50px;
+          height: 71px;
+          background-color: #000;
+          background-clip: padding-box;
+        }
+      }
+    }
+    .nav-left {
+      flex: 6;
+      height: 100%;
+      .header-menu {
+        height: 100%;
+        display: flex;
+        justify-content: space-around;
+      }
+    }
+    .nav-right {
+      flex: 2;
+      height: 100%;
+      .header-user-setting {
+        height: 100%;
+        justify-content: space-around;
+        display: flex;
+      }
+    }
+    .menu-item {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      span {
+        vertical-align: middle;
+        padding: 4px 10px;
+        border-radius: 5px;
+        font-size: $font-size-lg;
+        color: $white;
+        transition: all 0.3s linear;
+        white-space: nowrap;
+      }
+      &:hover {
+        text-decoration: none;
+        span {
+          font-size: 24px;
+          font-weight: 700;
+          background-color: $white;
+          color: $theme-dark;
+        }
+      }
+    }
+  }
+}

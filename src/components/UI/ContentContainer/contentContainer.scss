@@ -1,0 +1,21 @@
+@import "@styles/resource";
+.main-section {
+  .banner-box {
+    position: relative;
+    img {
+      width: 100%;
+    }
+    .banner-text {
+      font-size: 120px;
+      font-weight: bold;
+      position: absolute;
+      text-align: center;
+      left: 11rem;
+      width: auto;
+      top: 2.4rem;
+      text-transform: uppercase;
+      color: $white;
+      line-height: 1.35;
+    }
+  }
+}

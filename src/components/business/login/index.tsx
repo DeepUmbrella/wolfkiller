@@ -2,9 +2,22 @@ import React from "react";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Checkbox, Form, Input } from "antd";
 
-export const Login: React.FC = () => {
-  const onFinish = (values: any) => {
+type LoginProos = {
+  devPass?: (password: string) => void;
+};
+
+type formValueType = {
+  username: string;
+  password: string;
+  rememberMe: boolean;
+};
+
+export const Login: React.FC<LoginProos> = ({ devPass = () => void 0 }) => {
+  const onFinish = (values: formValueType) => {
     console.log("Received values of form: ", values);
+    if (values?.username === "dev") {
+      devPass(values?.password ?? "");
+    }
   };
 
   return (
@@ -34,7 +47,7 @@ export const Login: React.FC = () => {
         />
       </Form.Item>
       <Form.Item>
-        <Form.Item name="remember" valuePropName="checked" noStyle>
+        <Form.Item name="rememberMe" valuePropName="checked" noStyle>
           <Checkbox>Remember me</Checkbox>
         </Form.Item>
 
