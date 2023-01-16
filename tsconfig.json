@@ -22,6 +22,7 @@
       "@styles": ["src/styles"],
       "@template": ["src/template"],
       "@constant": ["src/constant"],
+      "@pages": ["src/pages"],
       "@vtypes/*": ["src/types/*"]
     }
   },

@@ -1,10 +1,9 @@
-import React, { PropsWithChildren, useEffect, useState } from "react";
-import router from "../router/router";
-import { Request, Login } from "@components";
-
 import "./root.scss";
-import { useLogin } from "@hooks";
+import React, { PropsWithChildren, useEffect, useState } from "react";
 import { RouterProvider } from "react-router-dom";
+import { Login } from "@components";
+import router from "../router/router";
+import { useLogin } from "@hooks";
 
 //todo @yl all contextProvider render in this component
 
