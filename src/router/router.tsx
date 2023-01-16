@@ -9,7 +9,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/accout",
+    path: "/account",
     element: <AccountPage />,
     errorElement: <ErrorPage />,
   },

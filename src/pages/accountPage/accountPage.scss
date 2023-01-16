@@ -1,0 +1,105 @@
+@import "@styles/resource.scss";
+@keyframes aound {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes textzoom {
+  0% {
+    font-weight: 400;
+    @include font8-size(24px);
+  }
+  50% {
+    font-weight: 700;
+    @include font8-size(24px);
+  }
+
+  100% {
+    font-weight: 400;
+    @include font8-size(24px);
+  }
+}
+.certification {
+  position: relative;
+
+  // background-image: linear-gradient(
+  //   to right,
+  //   red,
+  //   orange,
+  //   yellow,
+  //   green,
+  //   skyblue
+  // );
+  width: 100vw;
+  height: var(--windSize);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .switch-group {
+    .switch-item {
+      cursor: pointer;
+      display: flex;
+      position: relative;
+      width: 118px;
+      height: 118px;
+      padding: 8px;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+
+      overflow: hidden;
+      border-radius: 100%;
+      &.pause::before {
+        animation-play-state: paused;
+      }
+      &::before {
+        content: " ";
+        z-index: -1;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(red, #2ac4ff, #ff0095);
+        animation: aound 2s linear infinite;
+      }
+      .text {
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+        color: $white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(#000, 0.8);
+        p {
+          font-weight: 700;
+          text-transform: uppercase;
+          padding: 4px;
+          border-radius: 8px;
+          transition: all 0.2s linear;
+        }
+        transition: all 0.2s linear;
+        // animation: textzoom 1s linear infinite;
+      }
+
+      &:hover {
+        .text {
+          font-weight: 700;
+          @include font8-size(24px);
+          p {
+            color: black;
+            background-image: linear-gradient(
+              to right,
+              #00ff54,
+              #2ac4ff,
+              #ff0095
+            );
+          }
+        }
+      }
+    }
+  }
+}

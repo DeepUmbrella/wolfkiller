@@ -1,0 +1,15 @@
+@import "@styles/resource.scss";
+
+.login-form {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 10px;
+  border-radius: 10px;
+  border: 10px solid transparent;
+  background-clip: border-box;
+  width: 300px;
+
+  @include media-down(375px) {
+    width: 100%;
+  }
+  height: auto;
+}

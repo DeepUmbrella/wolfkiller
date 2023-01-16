@@ -15,6 +15,23 @@ export const Root: React.FC<PropsWithChildren> = ({ children }) => {
   });
 
   useEffect(() => {
+    const windowSizeHandler = () => {
+      document.body.setAttribute(
+        "style",
+        `--windSize:${window.innerHeight}px;`
+      );
+    };
+    if (typeof window !== "undefined") {
+      windowSizeHandler();
+      window.addEventListener("resize", windowSizeHandler);
+    }
+    return () => {
+      if (typeof window !== "undefined") {
+        window.removeEventListener("resize", windowSizeHandler);
+      }
+    };
+  });
+  useEffect(() => {
     console.log(devPassWord);
     if (typeof window !== "undefined") {
       if (devPassWord == "yl123") {

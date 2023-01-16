@@ -1,0 +1,35 @@
+@mixin media-up($breakpoints) {
+  @if $breakpoints != null {
+    @media (min-width: $breakpoints) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+@mixin media-down($breakpoints) {
+  @if $breakpoints != null {
+    @media (max-width: $breakpoints) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+@mixin media-between($breakpointsmin, $breakpointsmax) {
+  @if $breakpointsmin != null and $breakpointsmax != null {
+    @media (min-width: $breakpointsmin) and (max-width: $breakpointsmax) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+@function font-lineheight($fontsize) {
+  @return $fontsize + 8px;
+}
+
+@mixin font8-size($fontsize) {
+  font-size: $fontsize;
+  line-height: font-lineheight($fontsize);
+}
