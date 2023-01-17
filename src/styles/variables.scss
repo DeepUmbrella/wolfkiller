@@ -4,6 +4,7 @@ $theme-light: #fafafa;
 $theme-dark: #333;
 $white: #fff;
 $deep-dark: #000;
+$light-dark: #333;
 
 //margin
 $m0: 0px;
@@ -20,3 +21,13 @@ $font-global-default: "Lato";
 $font-size-base: 16px;
 $font-size-sm: $font-size-base * 0.875;
 $font-size-lg: $font-size-base * 1.25;
+$font-size-h1: $font-size-base * 3;
+$font-size-h1-md: $font-size-base * 2;
+
+//brakponits
+
+$breakpoints-sm: 390px;
+$breakpoints-md: 768px;
+$breakpoints-lg: 992px;
+$breakpoints-xl: 1440px;
+$breakpoints-xxl: 1920px;

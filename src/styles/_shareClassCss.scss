@@ -1,0 +1,29 @@
+@import "./founction";
+@import "./variables.scss";
+.text-up {
+  text-transform: uppercase;
+}
+.text-low {
+  text-transform: lowercase;
+}
+.text-cap {
+  text-transform: capitalize;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex-h {
+  flex-direction: column;
+}
+.flex-v {
+  flex-direction: row;
+}
+.text-h1 {
+  @include font8-size($font-size-h1);
+  @include media-down($breakpoints-md) {
+    @include font8-size($font-size-h1-md);
+  }
+}
