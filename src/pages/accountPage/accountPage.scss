@@ -142,11 +142,11 @@
   }
   .left-login {
     align-self: flex-start;
-  }
-  .right-register {
-    align-self: flex-end;
     .arrow {
       transform: rotate(180deg);
     }
+  }
+  .right-register {
+    align-self: flex-end;
   }
 }
