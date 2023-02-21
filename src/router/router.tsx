@@ -1,11 +1,22 @@
 import React from "react";
 import { createBrowserRouter } from "react-router-dom";
-import { ErrorPage, HomePage, AccountPage, Page404 } from "@pages";
+import {
+  ErrorPage,
+  HomePage,
+  AccountPage,
+  Page404,
+  AccountManagementPage,
+} from "@pages";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomePage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/management",
+    element: <AccountManagementPage />,
     errorElement: <ErrorPage />,
   },
   {
