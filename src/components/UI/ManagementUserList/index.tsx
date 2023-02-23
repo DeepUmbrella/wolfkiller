@@ -10,7 +10,7 @@ export interface ManagementUserItem {
   createDate: string;
 }
 export interface ManagementUserList {
-  userList: ManagementUserItem[];
+  userList?: ManagementUserItem[];
 }
 
 export const ManagementUserList: React.FC<ManagementUserList> = ({
@@ -41,9 +41,16 @@ export const ManagementUserList: React.FC<ManagementUserList> = ({
     {
       title: "Action",
       key: "action",
+      dataIndex: "action",
       render: (_, record) => (
         <Space size="middle">
-          <a>Invite {record.name}</a>
+          <a
+            onClick={() => {
+              console.log(456);
+            }}
+          >
+            Invite {record.name}
+          </a>
           <a>Delete</a>
         </Space>
       ),
@@ -76,8 +83,16 @@ export const ManagementUserList: React.FC<ManagementUserList> = ({
 
   return (
     <div className="management-list">
-      <Table dataSource={data} columns={columns} />
-      <Table></Table>
+      <Table dataSource={data}>
+        {columns.map(({ title, dataIndex, key, render }) => (
+          <Table.Column
+            title={title}
+            dataIndex={dataIndex}
+            key={key}
+            render={render}
+          />
+        ))}
+      </Table>
     </div>
   );
 };

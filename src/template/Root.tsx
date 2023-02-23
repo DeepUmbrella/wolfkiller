@@ -30,9 +30,8 @@ export const Root: React.FC<PropsWithChildren> = ({ children }) => {
         window.removeEventListener("resize", windowSizeHandler);
       }
     };
-  });
+  }, []);
   useEffect(() => {
-    console.log(devPassWord);
     if (typeof window !== "undefined") {
       if (devPassWord == "yl123") {
         window.localStorage.setItem("devPassword", "yl123");
