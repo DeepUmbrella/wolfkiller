@@ -12,6 +12,7 @@ export default defineConfig({
       "@vtypes/*": resolve(__dirname, "src/types/*"),
       "@constant": resolve(__dirname, "src/constant"),
       "@pages": resolve(__dirname, "src/pages"),
+      "@api": resolve(__dirname, "src/api"),
     },
   },
   server: {

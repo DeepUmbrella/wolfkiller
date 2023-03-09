@@ -1,4 +1,4 @@
 import React from "react";
-export const Page404 = () => {
+export const Page404: React.FC<any> = () => {
   return <div>page404</div>;
 };

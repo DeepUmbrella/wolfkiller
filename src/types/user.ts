@@ -1,3 +1,5 @@
+import { type } from "os";
+
 export type UserInfo = {
   user_name: string;
   account: string;
@@ -40,3 +42,11 @@ export type CheckResponse = {
   state: boolean;
   error_message: string;
 };
+export type ManagementUser = {
+  manager: boolean;
+  info: {
+    level: number;
+    list: any[];
+  } | null;
+};
+export type ManageResponse = ManagementUser;

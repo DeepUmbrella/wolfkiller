@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useManagementUser } from "@hooks";
 import { ManagementUserList, ManagementUserOption } from "@components";
 
 export const AccountManagementPage = () => {
   const { manager, info } = useManagementUser();
+
   if (!manager) {
     return (
       <div>

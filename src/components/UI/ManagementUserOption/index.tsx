@@ -31,7 +31,9 @@ export const ManagementUserOption: React.FC = () => (
     <Input.Group compact>
       <Select defaultValue="name" style={{ width: "10%" }}>
         {optionConfig.map(({ label, value }) => (
-          <Option value={value}>{label}</Option>
+          <Option value={value} key={value}>
+            {label}
+          </Option>
         ))}
       </Select>
       <Input.Search
