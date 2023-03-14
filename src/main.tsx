@@ -6,7 +6,7 @@ console.log(
   "[attention] : in here React 18 will render twice in development model  "
 );
 ReactDOM.createRoot(document.getElementById("yroot") as HTMLElement).render(
-  <React.StrictMode>
-    <Root />
-  </React.StrictMode>
+  // <React.StrictMode>
+  <Root />
+  // </React.StrictMode>
 );

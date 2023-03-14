@@ -17,9 +17,9 @@ const generateRouter = (page: {
       errorElement: <ErrorPage />,
     });
   });
+  console.log(router, "router");
   return router;
 };
-console.log(123456);
 const router = createBrowserRouter([
   {
     path: "/",

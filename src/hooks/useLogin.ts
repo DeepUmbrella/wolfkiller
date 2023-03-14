@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import { checkLoginState } from "../utils";
 
 export const useLogin = () => {
-  const [loginState, setLoginState] = useState(() => {
-    const data = checkLoginState();
+  const [loginState, setLoginState] = useState({});
 
-    console.log(data, "data");
+  useEffect(() => {
+    checkLoginState().then((data) => {
+      setLoginState(data);
+    });
+  }, []);
 
-    return true;
-  });
-
-  return [loginState, setLoginState];
+  return [loginState, setLoginState] as const;
 };

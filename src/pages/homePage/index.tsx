@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./homePage.scss";
 import { GlobalFooter, GlobalHeader, ContentContainer } from "@components";
 

@@ -15,12 +15,16 @@ export const login = async (
 };
 
 export const checkLogin = async (
-  userToken?: string
+  userToken = ""
 ): Promise<AxiosResponse<CheckResponse>> => {
-  if (userToken) {
-    userToken = "";
+  if (typeof userToken !== "string") {
+    userToken = new String(userToken).toString();
   }
-  return await request.get(API_REQUEST.CHECK_USER, userToken);
+  return await request.get(API_REQUEST.CHECK_USER, {
+    headers: {
+      Authorization: `Bearer ${userToken}`,
+    },
+  });
 };
 
 export const mangementUserList = async (

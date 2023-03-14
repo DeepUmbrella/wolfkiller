@@ -3,7 +3,7 @@ import React, { PropsWithChildren, useEffect, useState } from "react";
 import { RouterProvider } from "react-router-dom";
 import { Login } from "@components";
 import router from "../router/router";
-import { useLogin } from "@hooks";
+import { AppPageContextProvider } from "@hooks";
 
 //todo @yl all contextProvider render in this component
 
@@ -53,5 +53,11 @@ export const Root: React.FC<PropsWithChildren> = ({ children }) => {
       );
     }
   }
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <AppPageContextProvider>
+        <RouterProvider router={router} />;
+      </AppPageContextProvider>
+    </>
+  );
 };
