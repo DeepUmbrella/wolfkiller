@@ -1,0 +1,10 @@
+@import "@styles/resource.scss";
+
+.default-avatar {
+  z-index: $root-message-z-index;
+}
+.avatar {
+  .is-login {
+    background-color: green;
+  }
+}

@@ -7,7 +7,6 @@ export const request = axios.create({
 });
 
 request.interceptors.request.use((req: AxiosRequestConfig) => {
-  req.headers["Content-Type"] = "application/json;charset=utf-8";
   return req;
 });
 

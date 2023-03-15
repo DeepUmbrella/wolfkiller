@@ -56,7 +56,7 @@ export const Root: React.FC<PropsWithChildren> = ({ children }) => {
   return (
     <>
       <AppPageContextProvider>
-        <RouterProvider router={router} />;
+        <RouterProvider router={router} />
       </AppPageContextProvider>
     </>
   );
