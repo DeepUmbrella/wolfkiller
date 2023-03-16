@@ -15,8 +15,12 @@ const generateRouter = (): RouteObject[] => {
     const Component = pageModule?.default || HomePage;
     router.push({
       path:
-        path.replace("../pages", "").replace("/index.tsx", "").toLowerCase() ||
-        "/",
+        path
+          .replaceAll(" ", "")
+          .replace("../pages", "")
+          .replace("/index.tsx", "")
+          .toLowerCase()
+          .replace("-", "/") || "/",
       element: <Component context={{ time: "166999" }} />,
       errorElement: <ErrorPage />,
     });
