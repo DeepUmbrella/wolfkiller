@@ -1,21 +1,22 @@
 import { RouteObject, createBrowserRouter } from "react-router-dom";
 import { ErrorPage, HomePage, Page404 } from "@pages";
+import { FC } from "react";
 
-import * as page from "@pages";
-import React from "react";
+interface PageModulesType {
+  [key: string | symbol]: { default?: FC<any> };
+}
 
-const generateRouter = (page: {
-  [x: string]: React.FC<React.ComponentProps<any>>;
-}): RouteObject[] => {
-  const pageinfo = import.meta.glob("../pages/**/*.tsx");
-  console.log(pageinfo, "pageinfo");
-  const PageName = Object.keys(page);
-
-  const router: any[] = [];
-  PageName.map((name: string) => {
-    const Component = page[name];
+const generateRouter = (): RouteObject[] => {
+  const router: RouteObject[] = [];
+  const pageModules: PageModulesType = import.meta.glob("../pages/**/*.tsx", {
+    eager: true,
+  });
+  Object.entries(pageModules).map(([path, pageModule]) => {
+    const Component = pageModule?.default || HomePage;
     router.push({
-      path: "/" + name.replace("Page", "").toLowerCase(),
+      path:
+        path.replace("../pages", "").replace("/index.tsx", "").toLowerCase() ||
+        "/",
       element: <Component context={{ time: "166999" }} />,
       errorElement: <ErrorPage />,
     });
@@ -29,7 +30,7 @@ const router = createBrowserRouter([
     element: <HomePage />,
     errorElement: <ErrorPage />,
   },
-  ...generateRouter(page),
+  ...generateRouter(),
   {
     path: "/*",
     element: <Page404 />,
