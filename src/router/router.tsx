@@ -7,7 +7,10 @@ import React from "react";
 const generateRouter = (page: {
   [x: string]: React.FC<React.ComponentProps<any>>;
 }): RouteObject[] => {
+  const pageinfo = import.meta.glob("../pages/**/*.tsx");
+  console.log(pageinfo, "pageinfo");
   const PageName = Object.keys(page);
+
   const router: any[] = [];
   PageName.map((name: string) => {
     const Component = page[name];

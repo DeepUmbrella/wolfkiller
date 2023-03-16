@@ -1,6 +1,7 @@
 import React from "react";
 
 import "./globalHeader.scss";
+import { UserAvatar } from "@components";
 
 export const GlobalHeader = () => {
   return (
@@ -35,9 +36,13 @@ export const GlobalHeader = () => {
             <a className="user-setting menu-item">
               <span>夜间模式</span>
             </a>
-            <a className="user-setting menu-item">
-              <span>设置</span>
-            </a>
+            <UserAvatar
+              className="flex-center header-avatar"
+              withUserOptions={{
+                placement: "bottomRight",
+              }}
+              withBadge={{ count: 1 }}
+            />
           </div>
         </nav>
       </div>

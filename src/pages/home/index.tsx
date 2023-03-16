@@ -10,10 +10,17 @@ import {
 export const HomePage = () => {
   return (
     <>
-      <UserAvatar />
       <GlobalHeader />
       <ContentContainer />
       <GlobalFooter />
+      <UserAvatar
+        displayMode={{ position: "fixed", bottom: "40px", right: "40px" }}
+        size={46}
+        avatarShape="circle"
+        withBadge={{ dot: true }}
+      />
     </>
   );
 };
+
+export default HomePage;

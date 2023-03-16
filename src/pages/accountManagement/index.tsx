@@ -20,3 +20,5 @@ export const AccountManagementPage = () => {
     </div>
   );
 };
+
+export default AccountManagementPage;

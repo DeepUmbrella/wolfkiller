@@ -4,7 +4,31 @@
   z-index: $root-message-z-index;
 }
 .avatar {
-  .is-login {
-    background-color: green;
+  cursor: pointer;
+  .is-login-noimg {
+    background-color: $user-primary;
+  }
+}
+
+.user-option-setting.ant-tooltip {
+  .ant-tooltip-content {
+    .ant-tooltip-inner {
+      background-color: $white;
+      display: flex;
+      flex-direction: column;
+      .option-item {
+        padding: 4px;
+        color: $deep-dark;
+        &:hover {
+          text-decoration: none;
+        }
+        text-align: center;
+
+        &:first-child {
+          margin-top: 0px;
+        }
+        margin-top: 10px;
+      }
+    }
   }
 }
