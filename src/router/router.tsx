@@ -25,11 +25,6 @@ const generateRouter = (): RouteObject[] => {
   return router;
 };
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <HomePage />,
-    errorElement: <ErrorPage />,
-  },
   ...generateRouter(),
   {
     path: "/*",
