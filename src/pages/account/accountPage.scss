@@ -1,152 +1,54 @@
 @import "@styles/resource.scss";
-@keyframes aound {
-  from {
-    transform: rotate(0);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-@keyframes textzoom {
-  0% {
-    font-weight: 400;
-    @include font8-size(24px);
-  }
-  50% {
-    font-weight: 700;
-    @include font8-size(24px);
-  }
-
-  100% {
-    font-weight: 400;
-    @include font8-size(24px);
-  }
-}
-.certification {
-  position: relative;
-  width: 100vw;
+.account-page {
+  width: 100%;
   height: var(--windSize);
+  background: linear-gradient(
+    45deg,
+    $account-theme-orange-200,
+    $account-theme-purple-200
+  );
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: $deep-dark;
-  .top-info {
-    color: $white;
-    font-weight: 700;
-    padding-bottom: 10px;
-
-    .info-tips {
-      text-align: center;
-      padding: 10px;
+  .account-container {
+    display: flex;
+    width: 80%;
+    height: 80%;
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px,
+      rgba(0, 0, 0, 0.04) 0px 10px 10px;
+    @include media-down(768px) {
+      width: 100%;
+      height: 100%;
+      border-radius: unset;
+      flex-direction: column;
     }
-  }
-  .switch-group,
-  .left-login,
-  .right-register {
-    width: 50%;
-    .arrow {
-      height: 58px;
-      .anticon {
-        cursor: pointer;
-        border-radius: 50%;
-        background-color: $deep-dark;
-        font-size: 48px;
-        color: $white;
-        transform: translate(0, 0);
-        padding: 2px;
-        transition: all 0.2s linear,
-          transform cubic-bezier(0.39, 0.575, 0.565, 1);
-        &:hover {
-          color: black;
-          font-size: 52px;
-          background-image: linear-gradient(
-            to right,
-            #00ff54,
-            #2ac4ff,
-            #ff0095
-          );
-        }
-      }
-    }
-  }
 
-  .switch-group {
-    .switch-item {
-      cursor: pointer;
-      display: flex;
-      position: relative;
-      width: 118px;
-      height: 118px;
-      padding: 8px;
-      text-align: center;
-      justify-content: center;
-      align-items: center;
-
-      overflow: hidden;
-      border-radius: 100%;
-      &.pass::before {
-        background-image: linear-gradient(red, #2ac4ff, #ff0095);
-        animation: aound 2s linear infinite;
+    .left-info {
+      height: 100%;
+      width: 30%;
+      background-color: $account-theme-yellow-100;
+      @include media-down(992px) {
+        width: 50%;
       }
-
-      &.pause::before {
-        animation-play-state: paused;
-      }
-      &::before {
-        content: " ";
-        position: absolute;
+      @include media-down(768px) {
+        height: 40%;
         width: 100%;
-        height: 100%;
-        animation: aound 2s linear infinite;
       }
-      .text {
-        z-index: 1;
-        height: 100%;
+    }
+    .right-option {
+      width: 70%;
+      height: 100%;
+      background-color: $account-theme-white-100;
+      @include media-down(992px) {
+        width: 50%;
+      }
+      @include media-down(768px) {
+        height: 60%;
         width: 100%;
-        border-radius: 100%;
-        color: $white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: $deep-dark;
-        p {
-          font-weight: 700;
-          text-transform: uppercase;
-          padding: 4px;
-          border: 1px solid $white;
-          border-radius: 8px;
-          transition: all 0.2s linear;
-        }
-        transition: all 0.2s linear;
-        // animation: textzoom 1s linear infinite;
-      }
-
-      &:hover {
-        .text {
-          font-weight: 700;
-          @include font8-size(24px);
-          p {
-            border: none;
-            color: black;
-            background-image: linear-gradient(
-              to right,
-              #00ff54,
-              #2ac4ff,
-              #ff0095
-            );
-          }
-        }
       }
     }
-  }
-  .left-login {
-    align-self: flex-start;
-    .arrow {
-      transform: rotate(180deg);
-    }
-  }
-  .right-register {
-    align-self: flex-end;
   }
 }

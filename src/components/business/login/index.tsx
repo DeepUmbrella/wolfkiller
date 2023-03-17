@@ -31,7 +31,9 @@ export const Login: React.FC<LoginProos> = ({ devPass = () => void 0 }) => {
       onFinish={onFinish}
     >
       <Form.Item
+        validateStatus="error"
         name="username"
+        hasFeedback
         rules={[{ required: true, message: "Please input your Username!" }]}
       >
         <Input
@@ -40,6 +42,8 @@ export const Login: React.FC<LoginProos> = ({ devPass = () => void 0 }) => {
         />
       </Form.Item>
       <Form.Item
+        hasFeedback
+        validateStatus="success"
         name="password"
         rules={[{ required: true, message: "Please input your Password!" }]}
       >
@@ -50,8 +54,14 @@ export const Login: React.FC<LoginProos> = ({ devPass = () => void 0 }) => {
         />
       </Form.Item>
       <Form.Item>
-        <Form.Item name="rememberMe" valuePropName="checked" noStyle>
-          <Checkbox>Remember me</Checkbox>
+        <Form.Item
+          hasFeedback
+          validateStatus="error"
+          name="rememberMe"
+          valuePropName="checked"
+          noStyle
+        >
+          <Checkbox className="remember-label">Remember me</Checkbox>
         </Form.Item>
 
         <a className="login-form-forgot" href="">
@@ -59,12 +69,13 @@ export const Login: React.FC<LoginProos> = ({ devPass = () => void 0 }) => {
         </a>
       </Form.Item>
 
-      <Form.Item>
-        <Button type="primary" htmlType="submit" className="login-form-button">
-          Log in
-        </Button>
-        Or <a href="">register now!</a>
-      </Form.Item>
+      <div className="switch-group flex-center flex-h">
+        <div className={`login-switch  switch-item pass`}>
+          <span className="login-text text-up text">
+            <p>log in</p>
+          </span>
+        </div>
+      </div>
     </Form>
   );
 };
