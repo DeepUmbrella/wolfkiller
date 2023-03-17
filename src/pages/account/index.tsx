@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Login, Register } from "@components";
 import { LoginOutlined } from "@ant-design/icons";
 import classNames from "classnames";
+import { Link } from "react-router-dom";
 
 export const AccountPage = () => {
   const [selectSection, setSelectSection] = useState(true);
@@ -15,8 +16,30 @@ export const AccountPage = () => {
       })}
     >
       <div className="account-container">
-        <div className="left-info"></div>
-        <div className="right-option"></div>
+        <div className="left-info">
+          <span className="left-info-logo">SGIN IN</span>
+          <h2 className="left-info-message">
+            To discover more, the world is at your feet.
+          </h2>
+        </div>
+        <div className="right-option">
+          <div className="option-message">
+            Not Have an Accout?
+            <Link to="/account/create">Sgin Up New! </Link>
+          </div>
+          <div className="option-form">
+            <Login></Login>
+          </div>
+          <div className="other-information">
+            <span className="information-detile">
+              If you have any needs, you can send an{" "}
+              <Link to={"/report/email"} target="_blank">
+                Email
+              </Link>{" "}
+              or to the <Link to={"/help/cantactus"}>Help Center</Link> tell us
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   );

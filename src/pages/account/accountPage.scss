@@ -29,23 +29,62 @@
     .left-info {
       height: 100%;
       width: 30%;
+      padding: 20px;
       background-color: $account-theme-yellow-100;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: bottom 15% center;
+      background-image: url("/account-theme01.jpg");
+
       @include media-down(992px) {
         width: 50%;
+        padding: 10px;
       }
       @include media-down(768px) {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: top;
         height: 40%;
         width: 100%;
+      }
+      .left-info-message {
+        line-height: $lg-lineheight;
+        color: $account-theme-infofont-100;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+      .left-info-logo {
+        height: 44px;
+        display: block;
+        margin-top: 20px;
+
+        font-weight: 900;
+        line-height: $normal-lineheight;
+        font-size: 44px;
+        text-align: center;
+        color: $account-theme-infofont-100;
+        @include media-down(768px) {
+          text-align: start;
+          margin-bottom: 0px;
+        }
+      }
+      .left-info-image {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: fill;
       }
     }
     .right-option {
       width: 70%;
-      height: 100%;
+
+      padding: 20px;
+
       background-color: $account-theme-white-100;
       @include media-down(992px) {
         width: 50%;
       }
       @include media-down(768px) {
+        padding: 10px;
         height: 60%;
         width: 100%;
       }

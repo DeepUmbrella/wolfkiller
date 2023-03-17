@@ -12,6 +12,8 @@ $account-theme-purple-100: #dfa0bf;
 $account-theme-purple-200: #d698db;
 $account-theme-yellow-100: #f5d185;
 $account-theme-white-100: $white;
+$account-theme-infofont-100: #866312;
+
 //margin
 $m0: 0px;
 
@@ -21,6 +23,13 @@ $p0: 0px;
 //font-family
 
 $font-global-default: "Lato";
+
+//line-height
+
+$normal-lineheight: 1;
+$l-lineheight: 1.25;
+$lg-lineheight: 1.5;
+$xl-lineheight: 1.75;
 
 //fontsize
 
