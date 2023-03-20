@@ -2,12 +2,17 @@ import React, { useState, useMemo } from "react";
 
 import "./globalHeader.scss";
 import { UserAvatar } from "@components";
-import type { MenuProps } from "antd";
-import { Menu } from "antd";
+import type { MenuProps, MenuTheme } from "antd";
+import { Menu, Switch } from "antd";
 import { menuArray } from "@constant";
-import { DownCircleOutlined, SettingOutlined } from "@ant-design/icons";
+import { DownCircleOutlined } from "@ant-design/icons";
 export const GlobalHeader = () => {
   const [current, setCurrent] = useState("unset");
+  const [theme, setTheme] = useState<MenuTheme>("dark");
+
+  const changeTheme = (value: boolean) => {
+    setTheme(value ? "dark" : "light");
+  };
 
   const menuItems: MenuProps["items"] = useMemo(
     () =>
@@ -50,7 +55,7 @@ export const GlobalHeader = () => {
               forceSubMenuRender
               overflowedIndicator={
                 <div className="menu-item">
-                  <DownCircleOutlined style={{ fontSize: 44, width: "100%" }} />
+                  <DownCircleOutlined style={{ fontSize: 32, width: "100%" }} />
                 </div>
               }
             />
@@ -58,12 +63,11 @@ export const GlobalHeader = () => {
         </nav>
         <nav className="nav-right">
           <div className="header-user-setting">
-            <UserAvatar
-              className="flex-center header-avatar"
-              withUserOptions={{
-                placement: "bottomRight",
-              }}
-              withBadge={{ count: 1 }}
+            <Switch
+              checked={theme === "dark"}
+              onChange={changeTheme}
+              checkedChildren="Dark"
+              unCheckedChildren="Light"
             />
           </div>
         </nav>

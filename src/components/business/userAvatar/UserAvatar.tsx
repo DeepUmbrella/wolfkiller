@@ -38,20 +38,17 @@ export const UserAvatar: React.FC<PropsWithChildren<AvatarProps>> = ({
   withUserOptions = {},
   avatarShape = "square",
   preFixName = "default",
-  avatarImgUrl = "",
+  avatarImgUrl = "/20220709150824_97667.thumb.1000_0.jpg",
   size = 44,
 }) => {
-  const isLogin = true; //todo there need own the user login state
+  const isLogin = false; //todo there need own the user login state
   return (
     <div
       className={classnames(className, `avatar ${preFixName}-avatar`)}
       style={displayMode}
     >
       <WithBadge withBadge={withBadge}>
-        <WithUserOptions
-          isLogin={isLogin}
-          withUserOptions={isLogin ? withUserOptions : isLogin}
-        >
+        <WithUserOptions isLogin={isLogin} withUserOptions={withUserOptions}>
           <Avatar
             size={size}
             src={avatarImgUrl}

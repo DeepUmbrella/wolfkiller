@@ -90,7 +90,7 @@
 
       padding: 20px;
 
-      background-color: $account-theme-white-100;
+      // background-color: $account-theme-white-100;
       @include media-down(992px) {
         width: 50%;
       }
@@ -116,7 +116,11 @@
         }
       }
       .option-form {
-        margin: 0 auto;
+        padding: $pd-10;
+        margin: 0 auto $mg-20 auto;
+        backdrop-filter: blur(10px);
+        border-radius: 10px;
+        border: 1px solid $light-dark;
         @include media-up(992px) {
           width: 80%;
         }

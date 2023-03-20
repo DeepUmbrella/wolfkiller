@@ -2,7 +2,7 @@ import React, { PropsWithChildren, RefObject, useMemo, useRef } from "react";
 import { Button, Tooltip, TooltipProps } from "antd";
 
 export interface UserOptionsProps {
-  withUserOptions?: TooltipProps;
+  withUserOptions: TooltipProps | null;
   isLogin?: boolean;
 }
 
@@ -40,7 +40,7 @@ export const WithUserOptions: React.FC<PropsWithChildren<UserOptionsProps>> = ({
     );
   }, [userOptions, isLogin]);
 
-  if (!withUserOptions) {
+  if (isLogin && !withUserOptions) {
     return <>{children}</>;
   }
   return (

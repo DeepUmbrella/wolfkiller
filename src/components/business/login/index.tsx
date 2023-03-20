@@ -4,6 +4,7 @@ import React from "react";
 
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Checkbox, Form, Input } from "antd";
+import { Link } from "react-router-dom";
 
 type LoginProos = {
   devPass?: (password: string) => void;
@@ -31,8 +32,8 @@ export const Login: React.FC<LoginProos> = ({ devPass = () => void 0 }) => {
       onFinish={onFinish}
     >
       <Form.Item
-        validateStatus="error"
         name="username"
+        validateStatus="success"
         hasFeedback
         rules={[{ required: true, message: "Please input your Username!" }]}
       >
@@ -43,7 +44,7 @@ export const Login: React.FC<LoginProos> = ({ devPass = () => void 0 }) => {
       </Form.Item>
       <Form.Item
         hasFeedback
-        validateStatus="success"
+        validateStatus="error"
         name="password"
         rules={[{ required: true, message: "Please input your Password!" }]}
       >
@@ -56,7 +57,6 @@ export const Login: React.FC<LoginProos> = ({ devPass = () => void 0 }) => {
       <Form.Item>
         <Form.Item
           hasFeedback
-          validateStatus="error"
           name="rememberMe"
           valuePropName="checked"
           noStyle
@@ -64,18 +64,25 @@ export const Login: React.FC<LoginProos> = ({ devPass = () => void 0 }) => {
           <Checkbox className="remember-label">Remember me</Checkbox>
         </Form.Item>
 
-        <a className="login-form-forgot" href="">
-          Forgot password
-        </a>
+        <Link className="login-form-forgot" to="/account/forgot">
+          Forgot password?
+        </Link>
       </Form.Item>
 
-      <div className="switch-group flex-center flex-h">
-        <div className={`login-switch  switch-item pass`}>
-          <span className="login-text text-up text">
-            <p>log in</p>
-          </span>
-        </div>
-      </div>
+      <Form.Item hasFeedback name="agree" valuePropName="checked" noStyle>
+        <Checkbox className="agree-check">
+          <Link className="login-form-agree" to="/account/agree">
+            Please read and agree to this agreement carefully.
+          </Link>
+        </Checkbox>
+      </Form.Item>
+
+      <Form.Item>
+        <Button type="primary" htmlType="submit" className="login-form-button">
+          LOG IN
+        </Button>
+        <Button className="login-rest-button">RESET COMMIT</Button>
+      </Form.Item>
     </Form>
   );
 };
