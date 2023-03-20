@@ -44,15 +44,15 @@ export const Root: React.FC<PropsWithChildren> = ({ children }) => {
 
   // console.log(loginState, "loginState");
 
-  if (devPassWord !== "yl123") {
-    if (process.env.NODE_ENV === "development") {
-      return (
-        <div>
-          <Login devPass={setDevPassword}></Login>
-        </div>
-      );
-    }
-  }
+  // if (devPassWord !== "yl123") {
+  //   if (process.env.NODE_ENV === "development") {
+  //     return (
+  //       <div>
+  //         <Login devPass={setDevPassword}></Login>
+  //       </div>
+  //     );
+  //   }
+  // }
   return (
     <>
       <AppPageContextProvider>

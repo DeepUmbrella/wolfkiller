@@ -24,5 +24,7 @@ export default defineConfig({
         rewrite: (path) => path.replace(/^\/api/, ""),
       },
     },
+    open: true,
+    host: "0.0.0.0",
   },
 });

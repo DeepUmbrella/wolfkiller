@@ -59,16 +59,20 @@
       }
     }
     .nav-left {
-      flex: 6;
+      flex: 7;
       height: 100%;
+      min-width: 0;
       .header-menu {
         height: 100%;
         display: flex;
         justify-content: space-around;
+        .ant-menu-submenu-title {
+          height: 100%;
+        }
       }
     }
     .nav-right {
-      flex: 2;
+      flex: 1;
       height: 100%;
       .header-user-setting {
         height: 100%;
@@ -80,6 +84,7 @@
       height: 100%;
       display: flex;
       align-items: center;
+      justify-content: center;
       cursor: pointer;
       span {
         vertical-align: middle;

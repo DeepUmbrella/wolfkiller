@@ -6,16 +6,28 @@
       width: 100%;
     }
     .banner-text {
-      font-size: 120px;
-      font-weight: bold;
+      top: 0;
       position: absolute;
+      font-size: 72px;
+      font-weight: bold;
       text-align: center;
-      left: 11rem;
-      width: auto;
-      top: 2.4rem;
+      width: 100%;
       text-transform: uppercase;
       color: $white;
       line-height: 1.35;
+      padding-top: $pd-25;
+      @include media-up(1400px) {
+        padding-top: 140px;
+      }
+      @include media-down(991.9px) {
+        font-size: 56px;
+      }
+      @include media-down(767.9px) {
+        font-size: 40px;
+      }
+      @include media-down(575.9px) {
+        font-size: 24px;
+      }
     }
   }
 }

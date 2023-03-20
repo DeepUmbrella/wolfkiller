@@ -3,9 +3,10 @@
 $theme-light: #fafafa;
 $theme-dark: #333;
 $white: #fff;
-$deep-dark: #000;
+$deep-dark: #000000;
 $light-dark: #333;
 $user-primary: #87d068;
+$light-green: #62cf93;
 $account-theme-orange-100: #efc796;
 $account-theme-orange-200: #f3cf85;
 $account-theme-purple-100: #dfa0bf;
@@ -16,9 +17,31 @@ $account-theme-infofont-100: #866312;
 
 //margin
 $m0: 0px;
+$mg-base: 2px;
+$mg-2: $mg-base * 2;
+$mg-4: $mg-base * 4;
+$mg-5: $mg-base * 5;
+$mg-6: $mg-base * 6;
+$mg-8: $mg-base * 8;
+$mg-10: $mg-base * 10;
+$mg-16: $mg-base * 16;
+$mg-20: $mg-base * 20;
+$mg-25: $mg-base * 25;
+$mg-30: $mg-base * 30;
 
 //padding
 $p0: 0px;
+$pd-base: 2px;
+$pd-2: $pd-base * 2;
+$pd-4: $pd-base * 4;
+$pd-5: $pd-base * 5;
+$pd-6: $pd-base * 6;
+$pd-8: $pd-base * 8;
+$pd-10: $pd-base * 10;
+$pd-16: $pd-base * 16;
+$pd-20: $pd-base * 20;
+$pd-25: $pd-base * 25;
+$pd-30: $pd-base * 30;
 
 //font-family
 
@@ -38,6 +61,13 @@ $font-size-sm: $font-size-base * 0.875;
 $font-size-lg: $font-size-base * 1.25;
 $font-size-h1: $font-size-base * 3;
 $font-size-h1-md: $font-size-base * 2;
+
+//fontWeight
+
+$font-weight-base: 400;
+$font-weight-normal: $font-weight-base;
+$font-weight-bold: $font-weight-base + 300;
+$font-weight-bgbold: $font-weight-base + 500;
 
 //brakponits
 

@@ -24,8 +24,10 @@ export const AccountPage = () => {
         </div>
         <div className="right-option">
           <div className="option-message">
-            Not Have an Accout?
-            <Link to="/account/create">Sgin Up New! </Link>
+            <p className="option-message-account">
+              <span>Not Have an Accout?</span>{" "}
+              <Link to="/account/create">Sgin Up New! </Link>
+            </p>
           </div>
           <div className="option-form">
             <Login></Login>

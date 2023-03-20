@@ -1,9 +1,36 @@
-import React from "react";
+import React, { useState, useMemo } from "react";
 
 import "./globalHeader.scss";
 import { UserAvatar } from "@components";
-
+import type { MenuProps } from "antd";
+import { Menu } from "antd";
+import { menuArray } from "@constant";
+import { DownCircleOutlined, SettingOutlined } from "@ant-design/icons";
 export const GlobalHeader = () => {
+  const [current, setCurrent] = useState("unset");
+
+  const menuItems: MenuProps["items"] = useMemo(
+    () =>
+      menuArray.map((item) => {
+        return {
+          label: (
+            <a className="menu-item">
+              <span>{item.label}</span>
+            </a>
+          ),
+          key: item.key,
+        };
+      }),
+    [menuArray]
+  );
+
+  console.log(menuItems, "menuItems");
+
+  const onClick: MenuProps["onClick"] = (e) => {
+    console.log("click ", e);
+    setCurrent(e.key);
+  };
+
   return (
     <header className="global-header">
       <div className="main-content">
@@ -14,28 +41,23 @@ export const GlobalHeader = () => {
         </a>
         <nav className="nav-left ">
           <div className="header-menu">
-            <a className="menu-item">
-              <span>游戏大厅</span>
-            </a>
-            <a className="menu-item">
-              <span>社交广场</span>
-            </a>
-            <a className="menu-item">
-              <span>公告通知</span>
-            </a>
-            <a className="menu-item">
-              <span>联系我们</span>
-            </a>
-            <a className="menu-item">
-              <span>关于我们</span>
-            </a>
+            <Menu
+              style={{ minWidth: 0, flex: "auto" }}
+              onClick={onClick}
+              items={menuItems}
+              mode="horizontal"
+              theme="dark"
+              forceSubMenuRender
+              overflowedIndicator={
+                <div className="menu-item">
+                  <DownCircleOutlined style={{ fontSize: 44, width: "100%" }} />
+                </div>
+              }
+            />
           </div>
         </nav>
         <nav className="nav-right">
           <div className="header-user-setting">
-            <a className="user-setting menu-item">
-              <span>夜间模式</span>
-            </a>
             <UserAvatar
               className="flex-center header-avatar"
               withUserOptions={{

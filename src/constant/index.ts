@@ -1,3 +1,5 @@
+export * from "./home";
+
 export enum API_REQUEST {
   LOGIN = "user/login",
 
