@@ -54,7 +54,7 @@ export const Login: React.FC<LoginProos> = ({ devPass = () => void 0 }) => {
           placeholder="Password"
         />
       </Form.Item>
-      <Form.Item>
+      <Form.Item className="remember-forgot">
         <Form.Item
           hasFeedback
           name="rememberMe"
@@ -69,7 +69,12 @@ export const Login: React.FC<LoginProos> = ({ devPass = () => void 0 }) => {
         </Link>
       </Form.Item>
 
-      <Form.Item hasFeedback name="agree" valuePropName="checked" noStyle>
+      <Form.Item
+        hasFeedback
+        name="agree"
+        valuePropName="checked"
+        className="argee"
+      >
         <Checkbox className="agree-check">
           <Link className="login-form-agree" to="/account/agree">
             Please read and agree to this agreement carefully.
@@ -79,9 +84,11 @@ export const Login: React.FC<LoginProos> = ({ devPass = () => void 0 }) => {
 
       <Form.Item>
         <Button type="primary" htmlType="submit" className="login-form-button">
-          LOG IN
+          SIGN IN
         </Button>
-        <Button className="login-rest-button">RESET COMMIT</Button>
+        <Button type="primary" danger className="login-rest-button">
+          RESET
+        </Button>
       </Form.Item>
     </Form>
   );

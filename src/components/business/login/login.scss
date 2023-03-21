@@ -9,8 +9,23 @@
   .login-form-button {
     width: 100%;
     margin-bottom: $mg-10;
+    font-weight: $font-weight-bold;
   }
   .login-rest-button {
     width: fit-content;
+  }
+
+  .remember-forgot {
+    margin-bottom: $m0;
+    .remember-label {
+      color: $account-theme-infofont-100;
+      font-weight: $font-weight-bold;
+    }
+  }
+  .argee {
+    margin-bottom: $mg-5;
+    .login-form-agree {
+      color: $account-theme-infofont-100;
+    }
   }
 }
