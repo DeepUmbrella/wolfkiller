@@ -13,6 +13,7 @@ export default defineConfig({
       "@constant": resolve(__dirname, "src/constant"),
       "@pages": resolve(__dirname, "src/pages"),
       "@api": resolve(__dirname, "src/api"),
+      "@utils": resolve(__dirname, "src/utils"),
     },
   },
   server: {

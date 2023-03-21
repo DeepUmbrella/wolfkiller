@@ -30,7 +30,7 @@ export const AccountPage = () => {
             </p>
           </div>
           <div className="option-form">
-            <Login></Login>
+            <Login initialValues={{ remember: true }}></Login>
           </div>
           <div className="other-information">
             <span className="information-detile">

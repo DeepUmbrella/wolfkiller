@@ -25,7 +25,11 @@
   .argee {
     margin-bottom: $mg-5;
     .login-form-agree {
+      padding-left: $pd-4;
       color: $account-theme-infofont-100;
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 }

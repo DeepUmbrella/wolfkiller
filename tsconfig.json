@@ -24,7 +24,8 @@
       "@constant": ["src/constant"],
       "@pages": ["src/pages"],
       "@vtypes/*": ["src/types/*"],
-      "@api": ["src/api"]
+      "@api": ["src/api"],
+      "@utils": ["src/utils"]
     }
   },
   "include": ["src"],
