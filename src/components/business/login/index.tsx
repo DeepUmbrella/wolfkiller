@@ -1,11 +1,12 @@
 import "./login.scss";
 
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Checkbox, Form, Input } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { validationEmailOrUserName } from "@utils";
+import { useAppPageSelector } from "@hooks";
 
 type LoginProps = {
   initialValues?: Partial<FormValueType>;
@@ -19,8 +20,18 @@ type FormValueType = {
 };
 
 export const Login: React.FC<LoginProps> = ({ initialValues }) => {
+  const navigateTo = useNavigate();
+
+  const loginState = useAppPageSelector((state) => state.login[0]);
   const [form] = Form.useForm();
   const [firstSubmit, setFirstSubmit] = useState(true);
+
+  useEffect(() => {
+    console.log(loginState, "loginState");
+    if (loginState?.data?.login) {
+      navigateTo("/");
+    }
+  }, [loginState]);
 
   const validateTrigger = useMemo(() => {
     if (firstSubmit) {

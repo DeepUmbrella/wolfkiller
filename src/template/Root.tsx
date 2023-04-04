@@ -1,7 +1,6 @@
 import "./root.scss";
 import React, { PropsWithChildren, useEffect, useState } from "react";
 import { RouterProvider } from "react-router-dom";
-import { Login } from "@components";
 import router from "../router/router";
 import { AppPageContextProvider } from "@hooks";
 
@@ -16,10 +15,7 @@ export const Root: React.FC<PropsWithChildren> = ({ children }) => {
 
   useEffect(() => {
     const windowSizeHandler = () => {
-      document.body.setAttribute(
-        "style",
-        `--windSize:${window.innerHeight}px;`
-      );
+      document.body.setAttribute("style", `--windSize:${window.innerHeight}px`);
     };
     if (typeof window !== "undefined") {
       windowSizeHandler();

@@ -27,14 +27,17 @@ export const WithUserOptions: React.FC<PropsWithChildren<UserOptionsProps>> = ({
             {title.toUpperCase()}
           </Button>
         ))}
+        <Button className="option-item" danger>
+          LOG OUT
+        </Button>
       </>
     ) : (
       <>
-        <Button className="option-item" href={"/account?login"}>
-          LOG IN
+        <Button className="option-item" href={"/account/sign/in"}>
+          SIGN IN
         </Button>
-        <Button className="option-item" href={"/account?create"}>
-          CREATE NEW ACCOUNT
+        <Button className="option-item" href={"/account/sign/up"}>
+          SIGN UP
         </Button>
       </>
     );
