@@ -18,6 +18,18 @@ type FormValueType = {
   remember: boolean;
   agreeUs: boolean;
 };
+const tailFormItemLayout = {
+  wrapperCol: {
+    xs: {
+      span: 24,
+      offset: 0,
+    },
+    sm: {
+      span: 16,
+      offset: 0,
+    },
+  },
+};
 
 export const Login: React.FC<LoginProps> = ({ initialValues }) => {
   const navigateTo = useNavigate();
@@ -118,13 +130,26 @@ export const Login: React.FC<LoginProps> = ({ initialValues }) => {
           Forgot password?
         </Link>
       </Form.Item>
-
-      <Form.Item name="agree" valuePropName="checked" className="argee">
-        <Checkbox className="agree-check"></Checkbox>
-
-        <Link className="login-form-agree" to="/account/agree">
-          Please read and agree to this agreement carefully.
-        </Link>
+      <Form.Item
+        name="agreement"
+        valuePropName="checked"
+        rules={[
+          {
+            validator: (_, value) =>
+              value
+                ? Promise.resolve()
+                : Promise.reject(new Error("Should accept agreement")),
+          },
+        ]}
+        className="argee"
+        {...tailFormItemLayout}
+      >
+        <Checkbox className="agree-check">
+          I have read the{" "}
+          <Link className="login-form-agree" to="/account/agree">
+            agreement
+          </Link>
+        </Checkbox>
       </Form.Item>
 
       <Form.Item>

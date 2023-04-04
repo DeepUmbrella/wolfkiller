@@ -9,6 +9,7 @@
 }
 
 .account-page {
+  min-height: var(--windSize);
   width: 100%;
   height: 100%;
   background: linear-gradient(
@@ -19,14 +20,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 673px;
-  @include media-down(768px) {
-    min-height: 720px;
-  }
   .account-container {
+    margin: 50px 30px;
     display: flex;
     width: 80%;
-    height: 80%;
     backdrop-filter: blur(10px);
     border-radius: 10px;
     overflow: hidden;
@@ -34,13 +31,11 @@
       rgba(0, 0, 0, 0.04) 0px 10px 10px;
     @include media-down(768px) {
       width: 100%;
-      height: 100%;
-      border-radius: unset;
+      margin: 30px;
       flex-direction: column;
     }
 
     .left-info {
-      height: 100%;
       width: 30%;
       padding: 20px;
       background-color: $account-theme-yellow-100;
@@ -67,7 +62,6 @@
         margin-bottom: 20px;
       }
       .left-info-logo {
-        height: 44px;
         display: block;
         margin-top: 20px;
 
@@ -130,9 +124,6 @@
         }
         @include media-down(991.9px) {
           width: 100%;
-        }
-        @include media-down(768px) {
-          max-width: 375px;
         }
       }
       .other-information {

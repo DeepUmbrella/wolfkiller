@@ -5,6 +5,7 @@
     float: right;
     color: $account-theme-infofont-100;
     font-weight: $font-weight-bold;
+    text-align: end;
   }
   .login-form-button {
     width: 100%;
@@ -20,6 +21,10 @@
     .remember-label {
       color: $account-theme-infofont-100;
       font-weight: $font-weight-bold;
+    }
+    .remember-label,
+    .login-form-forgot {
+      width: 50%;
     }
   }
   .argee {

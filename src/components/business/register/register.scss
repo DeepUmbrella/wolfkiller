@@ -1,0 +1,14 @@
+@import "@styles/resource.scss";
+
+.register-form {
+  .register-form-submit {
+    width: 100%;
+  }
+  .login-form-agree {
+    padding-left: $pd-4;
+    color: $account-theme-infofont-100;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

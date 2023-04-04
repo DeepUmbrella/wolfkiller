@@ -25,8 +25,8 @@ export const SignPage: React.FC<{}> = (props) => {
   return (
     <div
       className={classNames("account-page", {
-        ["now-login"]: isSignup,
-        ["now-create"]: !isSignup,
+        ["sgin-up"]: isSignup,
+        ["sgin-in"]: !isSignup,
       })}
     >
       <div className="account-container">
