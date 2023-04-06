@@ -49,6 +49,7 @@ export const Register: React.FC = () => {
       <Form.Item
         name="email"
         label="E-mail"
+        tooltip="Make sure this email can accept the verification information sent by us!"
         rules={[
           {
             type: "email",
@@ -73,6 +74,7 @@ export const Register: React.FC = () => {
           },
         ]}
         hasFeedback
+        tooltip="The password must be 6-32 characters and have at least one uppercase letter!"
       >
         <Input.Password />
       </Form.Item>
@@ -120,7 +122,14 @@ export const Register: React.FC = () => {
       <Form.Item
         name="phone"
         label="Phone Number"
-        rules={[{ required: true, message: "Please input your phone number!" }]}
+        rules={[
+          {
+            pattern: /^(13[0-9]|14[5|7]|15[0-9]|18[0-9])\d{8}$/,
+            required: true,
+            max: 11,
+            message: "Please input your phone number!",
+          },
+        ]}
       >
         <Input addonBefore={prefixSelector} style={{ width: "100%" }} />
       </Form.Item>
@@ -170,15 +179,26 @@ export const Register: React.FC = () => {
           </Link>
         </Checkbox>
       </Form.Item>
-      <Form.Item wrapperCol={{ span: 24 }}>
-        <Button
-          className="register-form-submit"
-          type="primary"
-          htmlType="submit"
-        >
-          SIGN UP
-        </Button>
-      </Form.Item>
+      <Row className="register-form-btn-group">
+        <Col span={11}>
+          <Button
+            className="register-form-btn register-form-submit"
+            type="primary"
+            htmlType="submit"
+          >
+            SIGN UP
+          </Button>
+        </Col>
+        <Col span={11}>
+          <Button
+            className="register-form-btn register-form-reset"
+            danger
+            type="primary"
+          >
+            REST FORM
+          </Button>
+        </Col>
+      </Row>
     </Form>
   );
 };

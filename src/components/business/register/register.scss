@@ -1,7 +1,8 @@
 @import "@styles/resource.scss";
 
 .register-form {
-  .register-form-submit {
+  .register-form-submit,
+  .register-form-reset {
     width: 100%;
   }
   .login-form-agree {
@@ -10,5 +11,10 @@
     &:hover {
       text-decoration: underline;
     }
+  }
+  .register-form-btn-group {
+    justify-content: space-around;
+  }
+  .register-form-btn {
   }
 }

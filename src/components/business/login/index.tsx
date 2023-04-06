@@ -5,8 +5,12 @@ import React, { useEffect, useMemo, useState } from "react";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Checkbox, Form, Input } from "antd";
 import { Link, useNavigate } from "react-router-dom";
-import { validationEmailOrUserName } from "@utils";
+import {
+  validationEmailOrUserName,
+  validationEmailOrUserNameRegExp,
+} from "@utils";
 import { useAppPageSelector } from "@hooks";
+import { Rule } from "antd/es/form";
 
 type LoginProps = {
   initialValues?: Partial<FormValueType>;
@@ -84,6 +88,7 @@ export const Login: React.FC<LoginProps> = ({ initialValues }) => {
       onFinish={onFinish}
       validateTrigger={validateTrigger}
       onFinishFailed={onFinishFailed}
+      wrapperCol={{}}
     >
       <Form.Item
         name="username"
@@ -98,10 +103,9 @@ export const Login: React.FC<LoginProps> = ({ initialValues }) => {
             max: 20,
             message: "Username Or Email Lenght Must be 4-20 !",
           },
-          () => {
-            return {
-              validator: validationEmailOrUserName,
-            };
+          {
+            pattern: validationEmailOrUserNameRegExp,
+            message: "Your Input Username Or Email Is Incorrect!",
           },
         ]}
       >
