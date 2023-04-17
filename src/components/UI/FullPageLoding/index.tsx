@@ -1,10 +1,28 @@
+import { createPortal } from "react-dom";
 import "./FullPageLoading.scss";
 
-import React, { useState } from "react";
+import React, { PropsWithChildren } from "react";
+import { useAppPageSelector } from "@hooks";
+import classNames from "classnames";
 
-const FullPageLoading = () => {
-  const [loading, setLoading] = useState(false);
-  return <div className="full-page-loading">FullPageLoading</div>;
+const FullPageLoading: React.FC<PropsWithChildren> = ({ children }) => {
+  const loading = useAppPageSelector((state) => state.loading[0]);
+
+  return (
+    <>
+      {children}
+      {createPortal(
+        <div
+          className={classNames("full-page-loading", {
+            loading,
+          })}
+        >
+          FullPageLoading
+        </div>,
+        document.body
+      )}
+    </>
+  );
 };
 
 export { FullPageLoading };

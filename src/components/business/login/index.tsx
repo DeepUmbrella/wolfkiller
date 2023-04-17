@@ -10,7 +10,6 @@ import {
   validationEmailOrUserNameRegExp,
 } from "@utils";
 import { useAppPageSelector } from "@hooks";
-import { Rule } from "antd/es/form";
 
 type LoginProps = {
   initialValues?: Partial<FormValueType>;

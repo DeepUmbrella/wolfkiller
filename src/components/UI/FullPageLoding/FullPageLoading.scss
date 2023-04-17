@@ -1,7 +1,18 @@
+@import "@styles/resource.scss";
+
 .full-page-loading {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   width: 100vw;
   height: 100vh;
   background-color: black;
   opacity: 0.2;
-  z-index: 9999;
+  z-index: $root-loading-z-index;
+  display: none;
+  &.loading {
+    display: block;
+  }
 }

@@ -3,29 +3,26 @@ import { checkLogin } from "../api";
 
 const IF_WINDOWS = typeof window !== "undefined";
 
-export const checkLoginState = async () => {
+export const checkLoginState = () => {
   const accessToken = getLocalStorageItem(ACCESS_TOKEN);
 
-  if (!accessToken) {
-    return {
-      stateCode: 401,
-      data: {
-        login: false,
-      },
-    };
-  }
+  // if (!accessToken) {
+  //   throw new Error("");
+  // }
 
-  try {
-    return await checkLogin(accessToken);
-  } catch ({ response }) {
-    if (response.status === 401) {
-      clearlocalStorageItem(ACCESS_TOKEN);
-    }
-    return {
-      stateCode: response.status,
-      data: response.data,
-    };
-  }
+  return checkLogin(accessToken);
+
+  // try {
+  //   return await checkLogin(accessToken);
+  // } catch ({ response }) {
+  //   if (response.status === 401) {
+  //     clearlocalStorageItem(ACCESS_TOKEN);
+  //   }
+  //   return {
+  //     stateCode: response.status,
+  //     data: response.data,
+  //   };
+  // }
 };
 
 export function clearlocalStorageItem(key: string) {

@@ -3,8 +3,18 @@ import React, { PropsWithChildren, useEffect, useState } from "react";
 import { RouterProvider } from "react-router-dom";
 import router from "../router/router";
 import { AppPageContextProvider } from "@hooks";
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from "react-query";
+import { FullPageLoading } from "@components";
 
 //todo @yl all contextProvider render in this component
+
+const queryClient = new QueryClient();
 
 export const Root: React.FC<PropsWithChildren> = ({ children }) => {
   const [devPassWord, setDevPassword] = useState(() => {
@@ -51,9 +61,13 @@ export const Root: React.FC<PropsWithChildren> = ({ children }) => {
   // }
   return (
     <>
-      <AppPageContextProvider>
-        <RouterProvider router={router} />
-      </AppPageContextProvider>
+      <QueryClientProvider client={queryClient}>
+        <AppPageContextProvider>
+          <FullPageLoading>
+            <RouterProvider router={router} />
+          </FullPageLoading>
+        </AppPageContextProvider>
+      </QueryClientProvider>
     </>
   );
 };

@@ -23,7 +23,9 @@ export const Register: React.FC = () => {
   const onFinish = (values: any) => {
     console.log("Received values of form: ", values);
   };
-
+  const clearForm = () => {
+    form.resetFields();
+  };
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
       <Select style={{ width: 70 }}>
@@ -194,6 +196,7 @@ export const Register: React.FC = () => {
             className="register-form-btn register-form-reset"
             danger
             type="primary"
+            onClick={clearForm}
           >
             REST FORM
           </Button>
