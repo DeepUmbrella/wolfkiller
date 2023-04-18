@@ -2,15 +2,13 @@ import { useEffect, useState } from "react";
 import { useIsFetching, useIsMutating } from "react-query";
 
 export const useLoading = () => {
-  console.log("run loading hook");
   const isMutating = useIsMutating();
   const isFetching = useIsFetching();
-  const [loading, setLoading] = useState(!!(isFetching | isMutating));
+  const [loading, setLoading] = useState(isMutating !== 0 || isFetching !== 0);
 
   useEffect(() => {
-    setLoading(!!(isFetching | isMutating));
+    setLoading(isMutating !== 0 || isFetching !== 0);
   }, [isMutating, isFetching]);
-  console.log({ isMutating, isFetching });
 
-  return [isMutating !== 0 || isFetching !== 0, setLoading] as const;
+  return [loading, setLoading] as const;
 };

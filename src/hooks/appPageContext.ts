@@ -1,11 +1,11 @@
 import { createContextFactory } from "./context";
 import { useLoading } from "./useLoading";
-import { useLogin } from "./useLogin";
+import { useUser } from "./useUser";
 
 const useAppPageEffect = () => {
   return {
-    login: useLogin(),
     loading: useLoading(),
+    user: useUser(),
   };
 };
 

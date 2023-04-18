@@ -37,16 +37,15 @@ const tailFormItemLayout = {
 export const Login: React.FC<LoginProps> = ({ initialValues }) => {
   const navigateTo = useNavigate();
 
-  const loginState = useAppPageSelector((state) => state.login[0]);
+  const user = useAppPageSelector((state) => state.user[0]);
   const [form] = Form.useForm();
   const [firstSubmit, setFirstSubmit] = useState(true);
 
   useEffect(() => {
-    console.log(loginState, "loginState");
-    if (loginState?.data?.login) {
+    if (user?.account) {
       navigateTo("/");
     }
-  }, [loginState]);
+  }, [user]);
 
   const validateTrigger = useMemo(() => {
     if (firstSubmit) {

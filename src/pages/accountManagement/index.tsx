@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import { useManagementUser } from "@hooks";
+
 import { ManagementUserList, ManagementUserOption } from "@components";
 
 export const AccountManagementPage = () => {
-  const { manager, info } = useManagementUser();
+  const manager = false;
 
   if (!manager) {
     return (

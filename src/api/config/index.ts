@@ -10,12 +10,12 @@ request.interceptors.request.use((req: AxiosRequestConfig) => {
   return req;
 });
 
-// request.interceptors.response.use(
-//   (res: AxiosResponse) => {
-//     return res;
-//   },
-//   (err) => {
-//     console.log(err);
-//     return err.response;
-//   }
-// );
+request.interceptors.response.use(
+  (res: AxiosResponse) => {
+    return res;
+  },
+  (err) => {
+    console.log(err);
+    return err.response;
+  }
+);

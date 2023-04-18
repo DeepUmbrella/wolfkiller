@@ -20,6 +20,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  @include media-down(768px) {
+    align-items: stretch;
+  }
   .account-container {
     margin: 30px;
     display: flex;
@@ -31,8 +34,9 @@
       rgba(0, 0, 0, 0.04) 0px 10px 10px;
     @include media-down(768px) {
       width: 100%;
-
+      margin: 0px;
       flex-direction: column;
+      border-radius: 0;
     }
 
     .left-info {
