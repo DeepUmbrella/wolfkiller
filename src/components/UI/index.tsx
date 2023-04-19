@@ -5,3 +5,4 @@ export { GlobalHeader } from "./GlobalHeader";
 export { ContentContainer } from "./ContentContainer";
 export { ManagementUserList } from "./ManagementUserList";
 export { ManagementUserOption } from "./ManagementUserOption";
+export { GlobalAlert } from "./GlobalAlert";

@@ -38,11 +38,13 @@ export const Login: React.FC<LoginProps> = ({ initialValues }) => {
   const navigateTo = useNavigate();
 
   const user = useAppPageSelector((state) => state.user[0]);
+  const globalAlert = useAppPageSelector((state) => state.globalMessage[0]);
   const [form] = Form.useForm();
   const [firstSubmit, setFirstSubmit] = useState(true);
 
   useEffect(() => {
-    if (user?.account) {
+    console.log(user, "6666666");
+    if (user?.user_name) {
       navigateTo("/");
     }
   }, [user]);
@@ -162,7 +164,13 @@ export const Login: React.FC<LoginProps> = ({ initialValues }) => {
           type="primary"
           danger
           className="login-rest-button"
-          onClick={clearForm}
+          onClick={() =>
+            globalAlert.open({
+              type: "loading",
+              content: "sssssssss",
+              duration: 0,
+            })
+          }
         >
           RESET
         </Button>

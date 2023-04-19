@@ -10,7 +10,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from "react-query";
-import { FullPageLoading } from "@components";
+import { FullPageLoading, GlobalAlert } from "@components";
 
 //todo @yl all contextProvider render in this component
 
@@ -64,7 +64,9 @@ export const Root: React.FC<PropsWithChildren> = ({ children }) => {
       <QueryClientProvider client={queryClient}>
         <AppPageContextProvider>
           <FullPageLoading>
-            <RouterProvider router={router} />
+            <GlobalAlert>
+              <RouterProvider router={router} />
+            </GlobalAlert>
           </FullPageLoading>
         </AppPageContextProvider>
       </QueryClientProvider>

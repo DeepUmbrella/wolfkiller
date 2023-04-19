@@ -1,5 +1,7 @@
 import React, { PropsWithChildren, RefObject, useMemo, useRef } from "react";
+
 import { Button, Tooltip, TooltipProps } from "antd";
+import { Link } from "react-router-dom";
 
 export interface UserOptionsProps {
   withUserOptions: TooltipProps | null;
@@ -33,11 +35,11 @@ export const WithUserOptions: React.FC<PropsWithChildren<UserOptionsProps>> = ({
       </>
     ) : (
       <>
-        <Button className="option-item" href={"/account/sign/in"}>
-          SIGN IN
+        <Button className="option-item">
+          <Link to={"/account/sign/in"}>SIGN IN</Link>
         </Button>
-        <Button className="option-item" href={"/account/sign/up"}>
-          SIGN UP
+        <Button className="option-item">
+          <Link to="/account/sign/up">SIGN UP</Link>
         </Button>
       </>
     );

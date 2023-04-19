@@ -1,6 +1,6 @@
 export type UserInfo = {
   user_name: string;
-  account: string;
+  accountId: string;
   level: number;
 };
 

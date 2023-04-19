@@ -15,7 +15,6 @@ request.interceptors.response.use(
     return res;
   },
   (err) => {
-    console.log(err);
     return err.response;
   }
 );
