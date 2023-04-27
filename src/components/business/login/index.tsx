@@ -8,17 +8,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { validationEmailOrUserNameRegExp } from "@utils";
 import { useAppPageSelector } from "@hooks";
 import { login } from "@api";
+import { LoginForm } from "@vtypes";
 
 type LoginProps = {
-  initialValues?: Partial<FormValueType>;
+  initialValues?: Partial<LoginForm>;
 };
 
-type FormValueType = {
-  user_name: string;
-  password: string;
-  remember: boolean;
-  agreeUs: boolean;
-};
 const tailFormItemLayout = {
   wrapperCol: {
     xs: {
@@ -53,7 +48,7 @@ export const Login: React.FC<LoginProps> = ({ initialValues }) => {
     return ["onChange", "onSubmit"];
   }, [firstSubmit]);
 
-  const onFinish = (values: FormValueType) => {
+  const onFinish = (values: LoginForm) => {
     // validationFormdata
     console.log("Received values of form: ", values);
     // clear pre Account cookie
@@ -109,7 +104,7 @@ export const Login: React.FC<LoginProps> = ({ initialValues }) => {
       name="normal_login"
       className="login-form"
       initialValues={initialValues}
-      onFinish={mutateAsync}
+      onFinish={onFinish}
       validateTrigger={validateTrigger}
       onFinishFailed={onFinishFailed}
     >

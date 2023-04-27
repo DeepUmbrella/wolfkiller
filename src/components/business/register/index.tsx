@@ -3,7 +3,7 @@ import { Button, Checkbox, Col, Form, Input, Row, Select } from "antd";
 import "./register.scss";
 import { Link } from "react-router-dom";
 import { useMutation } from "react-query";
-import {  } from "@api";
+import { register } from "@api";
 import { RegisterForm } from "@vtypes";
 
 const { Option } = Select;
@@ -20,12 +20,13 @@ const formItemLayout = {
 };
 
 export const Register: React.FC = () => {
-  const [form] = Form.useForm();
-  const { mutateAsync } = useMutation("register",,{retry: false,
-    onSuccess: (data, varibles, context) => {
-      
-    }});
-  const onFinish = (values:RegisterForm ) => {
+  const [form] = Form.useForm<RegisterForm>();
+
+  const { mutateAsync } = useMutation("register", register, {
+    retry: false,
+    onSuccess: (data, varibles, context) => {},
+  });
+  const onFinish = (values) => {
     console.log("Received values of form: ", values);
   };
   const clearForm = () => {
@@ -57,6 +58,7 @@ export const Register: React.FC = () => {
         name="email"
         label="E-mail"
         tooltip="Make sure this email can accept the verification information sent by us!"
+        hasFeedback
         rules={[
           {
             type: "email",
@@ -87,7 +89,7 @@ export const Register: React.FC = () => {
       </Form.Item>
 
       <Form.Item
-        name="confirm"
+        name="secend_password"
         label="Confirm Password"
         dependencies={["password"]}
         hasFeedback
@@ -112,9 +114,10 @@ export const Register: React.FC = () => {
       </Form.Item>
 
       <Form.Item
-        name="nickname"
-        label="Nickname"
+        name="nick_name"
+        label="Nick Name"
         tooltip="What do you want others to call you?"
+        hasFeedback
         rules={[
           {
             required: true,
@@ -127,7 +130,8 @@ export const Register: React.FC = () => {
       </Form.Item>
 
       <Form.Item
-        name="phone"
+        name="phone_number"
+        hasFeedback
         label="Phone Number"
         rules={[
           {
@@ -148,7 +152,8 @@ export const Register: React.FC = () => {
         <Row gutter={8}>
           <Col span={12}>
             <Form.Item
-              name="captcha"
+              hasFeedback
+              name="safety_verify_code"
               noStyle
               rules={[
                 {

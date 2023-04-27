@@ -10,11 +10,12 @@ export interface ProfileResponse {
   error_message: string;
 }
 
+export interface LoginForm extends LoginRequest {}
 export interface LoginRequest {
   user_name: string;
   password: string;
   remember: boolean;
-  agreeUs: boolean;
+  agree_us: boolean;
   safety_verify_code?: string;
 }
 
@@ -26,7 +27,7 @@ export interface RegisterRequest {
   password: string;
   nick_name: string;
   phone_number: string;
-  agreeUs: boolean;
+  agreement: boolean;
   safety_verify_code: string;
 }
 export interface RegisterResponse {
