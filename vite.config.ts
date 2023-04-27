@@ -1,6 +1,9 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { resolve } from "path";
+const config = require("./tsconfig.json");
+
+console.log(config);
 export default defineConfig({
   plugins: [react()],
   resolve: {
@@ -9,7 +12,7 @@ export default defineConfig({
       "@hooks": resolve(__dirname, "src/hooks"),
       "@styles": resolve(__dirname, "src/styles"),
       "@template": resolve(__dirname, "src/template"),
-      "@vtypes/*": resolve(__dirname, "src/types/*"),
+      "@vtypes": resolve(__dirname, "src/types"),
       "@constant": resolve(__dirname, "src/constant"),
       "@pages": resolve(__dirname, "src/pages"),
       "@api": resolve(__dirname, "src/api"),

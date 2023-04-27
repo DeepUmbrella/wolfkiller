@@ -1,22 +1,20 @@
 import "./login.scss";
 
 import React, { useEffect, useMemo, useState } from "react";
-
+import { Mutation, useMutation, useQuery } from "react-query";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
-import { Button, Checkbox, Form, Input } from "antd";
+import { Button, Checkbox, Form, Input, Statistic } from "antd";
 import { Link, useNavigate } from "react-router-dom";
-import {
-  validationEmailOrUserName,
-  validationEmailOrUserNameRegExp,
-} from "@utils";
+import { validationEmailOrUserNameRegExp } from "@utils";
 import { useAppPageSelector } from "@hooks";
+import { login } from "@api";
 
 type LoginProps = {
   initialValues?: Partial<FormValueType>;
 };
 
 type FormValueType = {
-  username: string;
+  user_name: string;
   password: string;
   remember: boolean;
   agreeUs: boolean;
@@ -36,19 +34,18 @@ const tailFormItemLayout = {
 
 export const Login: React.FC<LoginProps> = ({ initialValues }) => {
   const navigateTo = useNavigate();
-
-  const user = useAppPageSelector((state) => state.user[0]);
-  const globalAlert = useAppPageSelector((state) => state.globalMessage[0]);
+  const [switchAccount, setSwitchAccount] = useState(false);
+  const [user, setUser] = useAppPageSelector((state) => state.user);
+  const user_name = user?.user_name;
   const [form] = Form.useForm();
   const [firstSubmit, setFirstSubmit] = useState(true);
-
-  useEffect(() => {
-    console.log(user, "6666666");
-    if (user?.user_name) {
-      navigateTo("/");
-    }
-  }, [user]);
-
+  const { mutateAsync, isLoading } = useMutation("login", login, {
+    retry: false,
+    onSuccess: (data, varibles, context) => {
+      setUser(data.data?.user_info);
+      setSwitchAccount(false);
+    },
+  });
   const validateTrigger = useMemo(() => {
     if (firstSubmit) {
       return ["onSubmit"];
@@ -56,19 +53,16 @@ export const Login: React.FC<LoginProps> = ({ initialValues }) => {
     return ["onChange", "onSubmit"];
   }, [firstSubmit]);
 
-  const requestResult = (data: FormValueType) => {
-    console.log("正在登陆");
-  };
-
   const onFinish = (values: FormValueType) => {
     // validationFormdata
     console.log("Received values of form: ", values);
+    // clear pre Account cookie
 
     // validationFail  do something
 
     // if success send request
 
-    requestResult();
+    mutateAsync(values);
   };
 
   const onFinishFailed = ({ values, errorFields, outOfDate }: any) => {
@@ -78,6 +72,36 @@ export const Login: React.FC<LoginProps> = ({ initialValues }) => {
   const clearForm = () => {
     form.resetFields(["username", "password"]);
   };
+  if (!switchAccount) {
+    if (user_name) {
+      return (
+        <div className="already-login">
+          <h2 className="already-login-title">You Are Logged In </h2>
+          <div className="already-login-name">
+            Current Account: <Link to={"/account"}>{user_name}</Link>
+          </div>
+          <div className="already-login-option">
+            <div className="back">
+              <Statistic.Countdown
+                format="s"
+                suffix=" seconds later"
+                value={Date.now() + 5 * 1000}
+                onChange={() => {}}
+                onFinish={() => navigateTo("/")}
+              />
+              <span className="back">
+                Back To <Link to={"/"}>Home</Link>
+              </span>
+            </div>
+            <p className="or">OR</p>
+            <Button size="large" onClick={() => setSwitchAccount(true)}>
+              Switch Account
+            </Button>
+          </div>
+        </div>
+      );
+    }
+  }
 
   return (
     <Form
@@ -85,13 +109,12 @@ export const Login: React.FC<LoginProps> = ({ initialValues }) => {
       name="normal_login"
       className="login-form"
       initialValues={initialValues}
-      onFinish={onFinish}
+      onFinish={mutateAsync}
       validateTrigger={validateTrigger}
       onFinishFailed={onFinishFailed}
-      wrapperCol={{}}
     >
       <Form.Item
-        name="username"
+        name="user_name"
         hasFeedback
         rules={[
           {
@@ -120,6 +143,7 @@ export const Login: React.FC<LoginProps> = ({ initialValues }) => {
         rules={[{ required: true, message: "Please input your password!" }]}
       >
         <Input
+          autoComplete=""
           prefix={<LockOutlined className="site-form-item-icon" />}
           type="password"
           placeholder="Password"
@@ -142,7 +166,7 @@ export const Login: React.FC<LoginProps> = ({ initialValues }) => {
             validator: (_, value) =>
               value
                 ? Promise.resolve()
-                : Promise.reject(new Error("Should accept agreement")),
+                : Promise.reject(new Error("you must should accept agreement")),
           },
         ]}
         className="argee"
@@ -157,20 +181,19 @@ export const Login: React.FC<LoginProps> = ({ initialValues }) => {
       </Form.Item>
 
       <Form.Item>
-        <Button type="primary" htmlType="submit" className="login-form-button">
+        <Button
+          loading={isLoading}
+          type="primary"
+          htmlType="submit"
+          className="login-form-button"
+        >
           SIGN IN
         </Button>
         <Button
           type="primary"
           danger
           className="login-rest-button"
-          onClick={() =>
-            globalAlert.open({
-              type: "loading",
-              content: "sssssssss",
-              duration: 0,
-            })
-          }
+          onClick={clearForm}
         >
           RESET
         </Button>

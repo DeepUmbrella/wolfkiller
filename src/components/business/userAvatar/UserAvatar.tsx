@@ -5,6 +5,7 @@ import { UserOutlined } from "@ant-design/icons";
 import { Avatar } from "antd";
 import { WithBadge, WithBadgeProps } from "./WithBadge";
 import { UserOptionsProps, WithUserOptions } from "./WithUserOptions";
+import { useAppPageSelector } from "@hooks";
 export type AvatarSizeResponseType = {
   xs: number;
   sm: number;
@@ -16,7 +17,6 @@ export type AvatarSizeResponseType = {
 export interface AvatarProps {
   showDropDown?: boolean;
   showMessageBadge?: boolean;
-  avatarImgUrl?: string;
   displayMode?: CSSPropertiesWithVar;
   withBadge?: WithBadgeProps["withBadge"];
   withUserOptions?: UserOptionsProps["withUserOptions"];
@@ -38,10 +38,12 @@ export const UserAvatar: React.FC<PropsWithChildren<AvatarProps>> = ({
   withUserOptions = {},
   avatarShape = "square",
   preFixName = "default",
-  avatarImgUrl = "/20220709150824_97667.thumb.1000_0.jpg",
+
   size = 44,
 }) => {
-  const isLogin = false; //todo there need own the user login state
+  const userData = useAppPageSelector((state) => state.user[0]);
+  const { user_name = "", avatar_url = "" } = userData ?? {};
+  const isLogin = !!user_name; //todo there need own the user login state
   return (
     <div
       className={classnames(className, `avatar ${preFixName}-avatar`)}
@@ -51,9 +53,9 @@ export const UserAvatar: React.FC<PropsWithChildren<AvatarProps>> = ({
         <WithUserOptions isLogin={isLogin} withUserOptions={withUserOptions}>
           <Avatar
             size={size}
-            src={avatarImgUrl}
+            src={avatar_url}
             className={classnames({
-              ["is-login-noimg"]: isLogin && !avatarImgUrl,
+              ["is-login-noimg"]: isLogin && !avatar_url,
               ["is-login"]: isLogin,
             })}
             shape={avatarShape}

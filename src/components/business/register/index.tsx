@@ -1,8 +1,10 @@
-import React, { useState } from "react";
-
+import React from "react";
 import { Button, Checkbox, Col, Form, Input, Row, Select } from "antd";
 import "./register.scss";
 import { Link } from "react-router-dom";
+import { useMutation } from "react-query";
+import {  } from "@api";
+import { RegisterForm } from "@vtypes";
 
 const { Option } = Select;
 
@@ -19,8 +21,11 @@ const formItemLayout = {
 
 export const Register: React.FC = () => {
   const [form] = Form.useForm();
-
-  const onFinish = (values: any) => {
+  const { mutateAsync } = useMutation("register",,{retry: false,
+    onSuccess: (data, varibles, context) => {
+      
+    }});
+  const onFinish = (values:RegisterForm ) => {
     console.log("Received values of form: ", values);
   };
   const clearForm = () => {

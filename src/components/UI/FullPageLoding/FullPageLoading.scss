@@ -8,11 +8,23 @@
   right: 0;
   width: 100vw;
   height: 100vh;
-  background-color: black;
-  opacity: 0.2;
+  background-color: $theme-dark-opcity;
+
   z-index: $root-loading-z-index;
   display: none;
   &.loading {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .full-page-spining {
+    .ant-spin-dot {
+      font-size: 60px;
+      i {
+        font-size: 32px;
+        width: 1em;
+        height: 1em;
+      }
+    }
   }
 }

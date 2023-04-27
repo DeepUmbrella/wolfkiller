@@ -1,7 +1,6 @@
 import React, { useState, useMemo } from "react";
 
 import "./globalHeader.scss";
-import { UserAvatar } from "@components";
 import type { MenuProps, MenuTheme } from "antd";
 import { Menu, Switch } from "antd";
 import { menuArray } from "@constant";
@@ -29,10 +28,7 @@ export const GlobalHeader = () => {
     [menuArray]
   );
 
-  console.log(menuItems, "menuItems");
-
   const onClick: MenuProps["onClick"] = (e) => {
-    console.log("click ", e);
     setCurrent(e.key);
   };
 

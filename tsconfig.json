@@ -23,7 +23,7 @@
       "@template": ["src/template"],
       "@constant": ["src/constant"],
       "@pages": ["src/pages"],
-      "@vtypes/*": ["src/types/*"],
+      "@vtypes": ["src/types"],
       "@api": ["src/api"],
       "@utils": ["src/utils"]
     }

@@ -123,11 +123,48 @@
         backdrop-filter: blur(10px);
         border-radius: 10px;
         border: 1px solid $light-dark;
+        min-height: 375px;
         @include media-up(992px) {
           width: 80%;
         }
         @include media-down(991.9px) {
           width: 100%;
+        }
+        .already-login {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          .already-login-title {
+            margin: 10px 0;
+            font-size: 32px;
+          }
+          .already-login-name {
+            display: inline-block;
+            font-size: 24px;
+            line-height: 1;
+            text-align: center;
+            a {
+              font-size: 36px;
+              color: $account-theme-infofont-100;
+            }
+          }
+          .already-login-option {
+            margin-top: 30px;
+
+            .back {
+              font-size: 24px;
+              a {
+                text-decoration: underline;
+                color: $account-theme-infofont-100;
+              }
+            }
+            .or {
+              font-size: 36px;
+              font-weight: 700;
+              margin: 20px 0;
+            }
+          }
         }
       }
       .other-information {

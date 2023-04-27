@@ -1,3 +1,4 @@
+import { message } from "antd";
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 
 export const request = axios.create({

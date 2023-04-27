@@ -1,7 +1,8 @@
 export type UserInfo = {
   user_name: string;
-  accountId: string;
-  level: number;
+  accountId?: string;
+  level?: number;
+  avatar_url: string;
 };
 
 export interface ProfileResponse {
@@ -10,20 +11,22 @@ export interface ProfileResponse {
 }
 
 export interface LoginRequest {
-  email: string;
-  password: string;
-  safety_verify_code: string;
-}
-
-export interface LoginResponse extends ProfileResponse {
-  access_token: string;
-}
-
-export interface RegisterRequest {
   user_name: string;
-  email: string;
-  phone_number: string;
   password: string;
+  remember: boolean;
+  agreeUs: boolean;
+  safety_verify_code?: string;
+}
+
+export interface LoginResponse extends ProfileResponse {}
+
+export interface RegisterForm extends RegisterRequest {}
+export interface RegisterRequest {
+  email: string;
+  password: string;
+  nick_name: string;
+  phone_number: string;
+  agreeUs: boolean;
   safety_verify_code: string;
 }
 export interface RegisterResponse {

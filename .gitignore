@@ -24,3 +24,4 @@ dist-ssr
 *.sw?
 # ignore lock save yarn.lock文件
 package-lock.json
+.env*

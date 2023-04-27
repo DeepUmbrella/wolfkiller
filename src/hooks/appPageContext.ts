@@ -2,7 +2,6 @@ import { useState } from "react";
 import { createContextFactory } from "./context";
 import { useLoading } from "./useLoading";
 import { useUser } from "./useUser";
-import { MessageInstance } from "antd/es/message/interface";
 import { message } from "antd";
 
 const useAppPageEffect = () => {
