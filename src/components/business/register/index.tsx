@@ -22,7 +22,7 @@ const formItemLayout = {
 export const Register: React.FC = () => {
   const [form] = Form.useForm<RegisterForm>();
 
-  const { mutateAsync } = useMutation("register", register, {
+  const { isLoading, mutateAsync } = useMutation("register", register, {
     retry: false,
     onSuccess: (data, varibles, context) => {},
   });
@@ -158,7 +158,7 @@ export const Register: React.FC = () => {
               rules={[
                 {
                   required: true,
-                  message: "Please input the captcha you got!",
+                  message: "please input the captcha you got in your E-mail!",
                 },
               ]}
             >
@@ -172,7 +172,7 @@ export const Register: React.FC = () => {
       </Form.Item>
 
       <Form.Item
-        name="agreement"
+        name="agree_us"
         valuePropName="checked"
         rules={[
           {
@@ -194,6 +194,7 @@ export const Register: React.FC = () => {
       <Row className="register-form-btn-group">
         <Col span={11}>
           <Button
+            loading={isLoading}
             className="register-form-btn register-form-submit"
             type="primary"
             htmlType="submit"

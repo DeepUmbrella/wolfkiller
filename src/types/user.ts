@@ -16,7 +16,7 @@ export interface LoginRequest {
   password: string;
   remember: boolean;
   agree_us: boolean;
-  safety_verify_code?: string;
+  safety_verify_code: string;
 }
 
 export interface LoginResponse extends ProfileResponse {}
@@ -25,9 +25,11 @@ export interface RegisterForm extends RegisterRequest {}
 export interface RegisterRequest {
   email: string;
   password: string;
+  secend_password: string;
   nick_name: string;
+  prefix: string;
   phone_number: string;
-  agreement: boolean;
+  agree_us: boolean;
   safety_verify_code: string;
 }
 export interface RegisterResponse {

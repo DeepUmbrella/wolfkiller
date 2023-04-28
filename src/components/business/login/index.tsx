@@ -3,7 +3,7 @@ import "./login.scss";
 import React, { useEffect, useMemo, useState } from "react";
 import { Mutation, useMutation, useQuery } from "react-query";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
-import { Button, Checkbox, Form, Input, Statistic } from "antd";
+import { Button, Checkbox, Col, Form, Input, Row, Statistic } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { validationEmailOrUserNameRegExp } from "@utils";
 import { useAppPageSelector } from "@hooks";
@@ -144,6 +144,28 @@ export const Login: React.FC<LoginProps> = ({ initialValues }) => {
           placeholder="Password"
         />
       </Form.Item>
+      <Form.Item>
+        <Row gutter={8}>
+          <Col span={12}>
+            <Form.Item
+              hasFeedback
+              name="safety_verify_code"
+              noStyle
+              rules={[
+                {
+                  required: true,
+                  message: "please input the captcha you got!",
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+          </Col>
+          <Col span={12}>
+            <Button>GET CAPTCHA</Button>
+          </Col>
+        </Row>
+      </Form.Item>
       <Form.Item className="remember-forgot">
         <Form.Item name="remember" valuePropName="checked" noStyle>
           <Checkbox className="remember-label">Remember me</Checkbox>
@@ -154,7 +176,7 @@ export const Login: React.FC<LoginProps> = ({ initialValues }) => {
         </Link>
       </Form.Item>
       <Form.Item
-        name="agreement"
+        name="agree_us"
         valuePropName="checked"
         rules={[
           {
@@ -174,7 +196,6 @@ export const Login: React.FC<LoginProps> = ({ initialValues }) => {
           </Link>
         </Checkbox>
       </Form.Item>
-
       <Form.Item>
         <Button
           loading={isLoading}
