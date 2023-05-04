@@ -26,8 +26,9 @@ export const Register: React.FC = () => {
     retry: false,
     onSuccess: (data, varibles, context) => {},
   });
-  const onFinish = (values) => {
+  const onFinish = (values: RegisterForm) => {
     console.log("Received values of form: ", values);
+    mutateAsync(values);
   };
   const clearForm = () => {
     form.resetFields();

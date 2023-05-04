@@ -5,9 +5,12 @@ export type UserInfo = {
   avatar_url: string;
 };
 
-export interface ProfileResponse {
+export interface BaseResponse {
+  message: string;
+  error_code: number;
+}
+export interface ProfileResponse extends BaseResponse {
   user_info: UserInfo | undefined;
-  error_message: string;
 }
 
 export interface LoginForm extends LoginRequest {}
