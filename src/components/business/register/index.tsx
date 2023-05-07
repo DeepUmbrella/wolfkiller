@@ -36,8 +36,8 @@ export const Register: React.FC = () => {
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
       <Select style={{ width: 70 }}>
-        <Option value="86">+86</Option>
-        <Option value="87">+87</Option>
+        <Option value={0}>+86</Option>
+        <Option value={1}>+87</Option>
       </Select>
     </Form.Item>
   );
@@ -50,11 +50,26 @@ export const Register: React.FC = () => {
       className="register-form"
       onFinish={onFinish}
       initialValues={{
-        prefix: "86",
+        prefix: 0,
       }}
       layout="vertical"
       scrollToFirstError
     >
+      <Form.Item
+        name="user_name"
+        label="User Name"
+        tooltip="What do you want others to call you?"
+        hasFeedback
+        rules={[
+          {
+            required: true,
+            message: "Please input your name!",
+            whitespace: true,
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
       <Form.Item
         name="email"
         label="E-mail"
@@ -115,28 +130,12 @@ export const Register: React.FC = () => {
       </Form.Item>
 
       <Form.Item
-        name="nick_name"
-        label="Nick Name"
-        tooltip="What do you want others to call you?"
-        hasFeedback
-        rules={[
-          {
-            required: true,
-            message: "Please input your nickname!",
-            whitespace: true,
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-
-      <Form.Item
         name="phone_number"
         hasFeedback
         label="Phone Number"
         rules={[
           {
-            pattern: /^(13[0-9]|14[5|7]|15[0-9]|18[0-9])\d{8}$/,
+            pattern: /^(13[0-9]|14[5|7]|15[0-9]|18[0-9]|19[0-9])\d{8}$/,
             required: true,
             max: 11,
             message: "Please input your phone number!",
