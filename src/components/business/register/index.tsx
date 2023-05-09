@@ -24,7 +24,9 @@ export const Register: React.FC = () => {
 
   const { isLoading, mutateAsync } = useMutation("register", register, {
     retry: false,
-    onSuccess: (data, varibles, context) => {},
+    onSuccess: (data, varibles, context) => {
+      console.log(data, varibles, context, "1111");
+    },
   });
   const onFinish = (values: RegisterForm) => {
     console.log("Received values of form: ", values);

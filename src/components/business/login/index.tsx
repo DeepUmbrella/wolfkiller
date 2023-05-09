@@ -36,8 +36,8 @@ export const Login: React.FC<LoginProps> = ({ initialValues }) => {
   const [firstSubmit, setFirstSubmit] = useState(true);
   const { mutateAsync, isLoading } = useMutation("login", login, {
     retry: false,
-    onSuccess: (data, varibles, context) => {
-      setUser(data.data?.user_info);
+    onSuccess: ({ data }, varibles, context) => {
+      setUser(data?.user_info);
       setSwitchAccount(false);
     },
   });
