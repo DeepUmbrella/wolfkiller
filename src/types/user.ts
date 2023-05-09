@@ -38,3 +38,11 @@ export interface RegisterRequest {
 export interface RegisterResponse {
   data: any;
 }
+
+export interface CaptchaResponse {
+  data: string;
+}
+export interface CaptchaRequest extends BaseEmailRequest {}
+export interface BaseEmailRequest {
+  email: string;
+}

@@ -2,8 +2,8 @@ import React from "react";
 import { Button, Checkbox, Col, Form, Input, Row, Select } from "antd";
 import "./register.scss";
 import { Link } from "react-router-dom";
-import { useMutation } from "react-query";
-import { register } from "@api";
+import { useMutation, useQuery } from "react-query";
+import { register, captcha } from "@api";
 import { RegisterForm } from "@vtypes";
 
 const { Option } = Select;
@@ -28,12 +28,27 @@ export const Register: React.FC = () => {
       console.log(data, varibles, context, "1111");
     },
   });
+  const { mutateAsync: captchaMutateAsync, isLoading: captchaLoading } =
+    useMutation("captcha", captcha, {
+      retry: false,
+    });
   const onFinish = (values: RegisterForm) => {
     console.log("Received values of form: ", values);
     mutateAsync(values);
   };
   const clearForm = () => {
     form.resetFields();
+  };
+
+  const getCaptcha = () => {
+    const errorLength = form.getFieldError("email").length;
+    const email = form.getFieldValue("email");
+    console.log(errorLength, email);
+    if (errorLength === 0 && email) {
+      captchaMutateAsync({ email });
+    } else {
+      form.scrollToField("email");
+    }
   };
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
@@ -157,18 +172,32 @@ export const Register: React.FC = () => {
               hasFeedback
               name="safety_verify_code"
               noStyle
+              dependencies={["email"]}
               rules={[
                 {
                   required: true,
                   message: "please input the captcha you got in your E-mail!",
                 },
+                ({ getFieldValue, getFieldError }) => ({
+                  validator(_, value) {
+                    if (
+                      getFieldError("email").length === 0 &&
+                      getFieldValue("email")
+                    ) {
+                      return Promise.resolve();
+                    }
+                    return Promise.reject(
+                      new Error("please enter the correct email address !")
+                    );
+                  },
+                }),
               ]}
             >
               <Input />
             </Form.Item>
           </Col>
           <Col span={12}>
-            <Button>Get captcha</Button>
+            <Button onClick={getCaptcha}>Get captcha</Button>
           </Col>
         </Row>
       </Form.Item>

@@ -5,6 +5,8 @@ import {
   ProfileResponse,
   RegisterRequest,
   RegisterResponse,
+  CaptchaResponse,
+  CaptchaRequest,
 } from "@vtypes";
 import { request } from "../config";
 
@@ -16,3 +18,6 @@ export const profile = async () =>
 
 export const register = async (req: RegisterRequest) =>
   await request.post<RegisterResponse>(API_REQUEST.REGISTER, req, {});
+
+export const captcha = async (req: CaptchaRequest) =>
+  await request.post<CaptchaResponse>(API_REQUEST.CAPTCHA_EMAIL, req);
